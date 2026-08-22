@@ -1,0 +1,1677 @@
+/* ===========================================================
+   PORTFOLIO — Elhadj Sylla M'Bengue
+   Cours PHP & MySQL — Projet Portfolio (Partie 1 : HTML & CSS)
+
+   Feuille de style unique, partagée par toutes les pages.
+   Aucun JavaScript : toutes les interactions (menu mobile,
+   mode sombre/clair, filtre de projets) sont réalisées
+   uniquement en CSS.
+
+   SOMMAIRE
+   1.  Variables de thème (couleurs & typographie)
+   2.  Reset et bases
+   3.  Typographie
+   4.  Conteneurs et grilles
+   5.  En-tête et navigation
+   6.  Bandeau d'accueil (hero)
+   7.  Titres de section
+   8.  Statistiques
+   9.  Cartes génériques
+   10. Compétences
+   11. Carrousel (défilement CSS)
+   12. Projets et filtre CSS
+   13. Frise chronologique
+   14. Formulaires
+   15. Boutons et pastilles
+   16. Blocs d'appel à l'action
+   17. Pied de page
+   18. Animations d'apparition
+   19. Responsive (media queries)
+   =========================================================== */
+
+
+/* -----------------------------------------------------------
+   1. VARIABLES DE THÈME
+   Palette de 5 couleurs : une principale (ambre doré), une
+   secondaire (cuivre), une d'accent (prune) et des neutres
+   chauds pour les fonds et le texte.
+
+   Pourquoi l'ambre et le cuivre : ce sont des teintes chaudes,
+   rares dans les portfolios de développeurs (majoritairement
+   bleus ou verts), et elles évoquent la lumière d'un atelier
+   plutôt que la froideur d'un écran. Le fond n'est pas un noir
+   neutre mais un charbon légèrement brun (#12100e), pour rester
+   cohérent avec la chaleur des accents.
+   ----------------------------------------------------------- */
+:root {
+  /* Couleurs de la palette : ambre & cuivre sur charbon chaud */
+  --couleur-principale: #f5a524;   /* ambre doré */
+  --couleur-secondaire: #e8683f;   /* cuivre */
+  --couleur-accent: #c04a6e;       /* prune */
+
+  /* Texte posé SUR une couleur d'accent (boutons, badges) */
+  --texte-sur-accent: #1f1508;
+
+  /* Neutres — thème sombre (par défaut) */
+  --fond: #12100e;
+  --fond-carte: #1b1815;
+  --fond-carte-2: #241f1b;
+  --bordure: #342c25;
+  --texte: #f4efe9;
+  --texte-doux: #b3a79b;
+  --texte-discret: #8d8177;
+
+  --voile: rgba(245, 165, 36, 0.10);
+  --ombre: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+
+  /* Typographie : deux polices téléchargées maximum.
+     La troisième est la police à chasse fixe déjà présente sur
+     la machine du visiteur : elle ne télécharge rien et reste
+     indispensable pour aligner correctement du code. */
+  --police-titre: "Space Grotesk", "Segoe UI", sans-serif;
+  --police-texte: "Inter", "Segoe UI", sans-serif;
+  --police-code: "Consolas", "SF Mono", "Menlo", monospace;
+
+  /* Couleurs de la coloration syntaxique.
+     Volontairement NON redéfinies en thème clair : le bloc de
+     code garde son fond sombre dans les deux thèmes, comme un
+     éditeur de texte. */
+  --fond-code: #0d0b09;
+  --code-mot-cle: #e8683f;
+  --code-type: #f5a524;
+  --code-chaine: #dd93a8;
+  --code-variable: #f4efe9;
+  --code-gris: #9a8d82;
+
+  /* Mesures récurrentes */
+  --rayon-petit: 8px;
+  --rayon-moyen: 14px;
+  --rayon-grand: 22px;
+  --largeur-max: 1120px;
+  --hauteur-entete: 76px;
+
+  color-scheme: dark;
+}
+
+/* Thème clair : activé quand la case #bascule-theme est cochée.
+   Les variables sont redéfinies sur <body>, tous les éléments
+   enfants en héritent automatiquement. */
+body:has(#bascule-theme:checked) {
+  /* L'ambre vif est illisible sur un fond clair : on passe à un
+     bronze nettement plus foncé pour garder un contraste d'au
+     moins 5:1 avec le fond, y compris pour les petits textes. */
+  --couleur-principale: #8f5208;
+  --couleur-secondaire: #c2521f;
+  --couleur-accent: #9c3355;
+  --texte-sur-accent: #ffffff;
+
+  --fond: #faf7f2;
+  --fond-carte: #ffffff;
+  --fond-carte-2: #f3ece2;
+  --bordure: #e4dbcd;
+  --texte: #1a1512;
+  --texte-doux: #554c44;
+  --texte-discret: #74695e;
+  --voile: rgba(168, 97, 10, 0.10);
+  --ombre: 0 20px 50px -25px rgba(60, 40, 20, 0.25);
+
+  color-scheme: light;
+}
+
+
+/* -----------------------------------------------------------
+   2. RESET ET BASES
+   ----------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Les mots très longs (adresses e-mail, URL) doivent pouvoir
+   se couper : sans cela, ils élargissent leur colonne et font
+   déborder la page sur les petits écrans. */
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+li,
+label {
+  overflow-wrap: break-word;
+}
+
+/* Halo dégradé discret en fond de page, identique sur tout le site */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60vw 40vw at 85% -10%, var(--voile), transparent 60%),
+    radial-gradient(40vw 30vw at -10% 30%, rgba(232, 104, 63, 0.07), transparent 60%);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+::selection {
+  background-color: var(--couleur-principale);
+  color: var(--texte-sur-accent);
+}
+
+/* Cases à cocher qui pilotent le menu et le thème :
+   invisibles à l'écran mais accessibles au clavier. */
+.commande-cachee {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  margin: 0;
+}
+
+/* Contour visible lors de la navigation au clavier */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.commande-cachee:focus-visible + label {
+  outline: 2px solid var(--couleur-principale);
+  outline-offset: 3px;
+}
+
+/* Lien d'évitement pour les lecteurs d'écran */
+.lien-evitement {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 200;
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--rayon-petit);
+  background-color: var(--couleur-principale);
+  color: var(--texte-sur-accent);
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.lien-evitement:focus {
+  top: 12px;
+}
+
+
+/* -----------------------------------------------------------
+   3. TYPOGRAPHIE
+   ----------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 0.6em;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* Échelle typographique fluide.
+   La borne basse est volontairement modeste : sur un téléphone,
+   un titre trop gros mange tout l'écran et oblige à scroller
+   avant même de comprendre de quoi parle la page. */
+h1 { font-size: clamp(1.85rem, 4.6vw, 3.2rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2.1rem); }
+h3 { font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
+
+p {
+  margin: 0 0 1em;
+  color: var(--texte-doux);
+}
+
+strong {
+  color: var(--texte);
+}
+
+/* Petit intitulé au-dessus des grands titres */
+.surtitre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1em;
+  font-family: var(--police-titre);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--couleur-principale);
+}
+
+.surtitre::before {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--couleur-principale), var(--couleur-secondaire));
+}
+
+.texte-degrade {
+  background: linear-gradient(100deg, var(--couleur-principale), var(--couleur-secondaire) 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.note {
+  font-size: 0.78rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   4. CONTENEURS ET GRILLES
+   ----------------------------------------------------------- */
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur-max);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 40px);
+}
+
+/* Les espacements verticaux suivent la largeur de l'écran :
+   généreux sur grand écran, resserrés sur téléphone. */
+.section {
+  padding-block: clamp(48px, 7vw, 92px);
+}
+
+.section-etroite {
+  padding-block: clamp(32px, 4.5vw, 56px);
+}
+
+.grille {
+  display: grid;
+  gap: 28px;
+}
+
+/* minmax(0, 1fr) plutôt que 1fr : cela autorise une colonne à
+   devenir plus étroite que son contenu le plus large, ce qui
+   évite tout débordement horizontal sur mobile. */
+.grille-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grille-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grille-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.grille-large { gap: 48px; }
+.grille-haut { align-items: start; }
+.grille-centre { align-items: center; }
+
+.separateur {
+  height: 1px;
+  border: none;
+  margin: 0;
+  background: linear-gradient(90deg, transparent, var(--bordure), transparent);
+}
+
+
+/* -----------------------------------------------------------
+   5. EN-TÊTE ET NAVIGATION
+   Le menu mobile s'ouvre grâce à une case à cocher masquée
+   (#bascule-menu) associée à un label en forme de bouton.
+   ----------------------------------------------------------- */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--hauteur-entete);
+  display: flex;
+  align-items: center;
+  background-color: var(--fond);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.navigation {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--texte);
+}
+
+.logo-marque {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, var(--couleur-principale), var(--couleur-secondaire));
+  color: var(--texte-sur-accent);
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.liens-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+}
+
+.liens-nav a {
+  position: relative;
+  padding: 0.3rem 0;
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--texte-doux);
+  transition: color 0.2s ease;
+}
+
+.liens-nav a:hover,
+.liens-nav a.actif {
+  color: var(--texte);
+}
+
+.liens-nav a.actif::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--couleur-principale), var(--couleur-secondaire));
+}
+
+.actions-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+/* Bouton de bascule du thème (label associé à #bascule-theme) */
+.bouton-theme {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  color: var(--texte);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.bouton-theme:hover {
+  border-color: var(--couleur-principale);
+  transform: translateY(-2px);
+}
+
+.bouton-theme svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* On n'affiche que l'icône correspondant au thème opposé */
+.icone-soleil { display: none; }
+.icone-lune { display: block; }
+
+body:has(#bascule-theme:checked) .icone-soleil { display: block; }
+body:has(#bascule-theme:checked) .icone-lune { display: none; }
+
+/* Bouton hamburger (label associé à #bascule-menu) */
+.bouton-menu {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.bouton-menu span {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--texte);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+
+/* -----------------------------------------------------------
+   6. BANDEAU D'ACCUEIL (HERO)
+   ----------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+  padding-block: clamp(40px, 6vw, 84px) clamp(36px, 4.5vw, 60px);
+}
+
+.hero-pastille {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  font-size: 0.82rem;
+  color: var(--texte-doux);
+}
+
+.hero-pastille .point {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--couleur-principale);
+  box-shadow: 0 0 0 4px var(--voile);
+  animation: battement 2.4s infinite;
+}
+
+.hero h1 {
+  margin-bottom: 0.5rem;
+}
+
+.accroche {
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  max-width: 52ch;
+}
+
+.hero-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-chiffres {
+  display: flex;
+  gap: 2.2rem;
+  margin-top: 2.6rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--bordure);
+}
+
+.hero-chiffre strong {
+  display: block;
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  color: var(--texte);
+}
+
+.hero-chiffre span {
+  font-size: 0.82rem;
+  color: var(--texte-discret);
+}
+
+/* Cadre visuel : la photo occupe TOUTE la carte.
+   Un voile chaud posé par-dessus relie le portrait à la palette
+   ambre du site et garantit que les étiquettes restent lisibles. */
+.hero-visuel {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--rayon-grand);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.hero-visuel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(18, 16, 14, 0.45) 0%, rgba(18, 16, 14, 0) 32%),
+    linear-gradient(145deg, rgba(245, 165, 36, 0.18), transparent 50%);
+}
+
+/* Photo de la page « À propos » : même cadrage portrait */
+.photo-profil {
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 5;
+  height: auto;   /* laisse aspect-ratio decider */
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: var(--rayon-grand);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  box-shadow: var(--ombre);
+}
+
+@keyframes rotation {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes battement {
+  0%, 100% { box-shadow: 0 0 0 4px var(--voile); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+
+
+/* -----------------------------------------------------------
+   7. TITRES DE SECTION
+   ----------------------------------------------------------- */
+.entete-section {
+  max-width: 640px;
+  margin-bottom: 3rem;
+}
+
+.ligne-titre {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2.6rem;
+}
+
+.ligne-titre .entete-section {
+  margin-bottom: 0;
+}
+
+.hero-page {
+  padding-block: clamp(40px, 5.5vw, 72px) clamp(28px, 3vw, 40px);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.hero-page p {
+  max-width: 60ch;
+}
+
+
+/* -----------------------------------------------------------
+   8. STATISTIQUES
+   ----------------------------------------------------------- */
+.carte-chiffre {
+  padding: 1.8rem;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  text-align: center;
+}
+
+.carte-chiffre strong {
+  display: block;
+  font-family: var(--police-titre);
+  font-size: 2.1rem;
+  background: linear-gradient(100deg, var(--couleur-principale), var(--couleur-secondaire));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.carte-chiffre span {
+  font-size: 0.85rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   9. CARTES GÉNÉRIQUES
+   ----------------------------------------------------------- */
+.carte {
+  padding: 1.8rem;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  border-color: var(--couleur-principale);
+  box-shadow: var(--ombre);
+}
+
+.carte-icone {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.1rem;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background-color: var(--voile);
+  color: var(--couleur-principale);
+}
+
+.carte-icone svg {
+  width: 24px;
+  height: 24px;
+}
+
+.lien-accent {
+  color: var(--couleur-principale);
+  font-weight: 600;
+}
+
+.lien-accent:hover {
+  text-decoration: underline;
+}
+
+.liens-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+}
+
+
+/* -----------------------------------------------------------
+   10. COMPÉTENCES
+   ----------------------------------------------------------- */
+.liste-etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.liste-etiquettes li {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+}
+
+.titre-carte-large {
+  margin-bottom: 1.6rem;
+}
+
+.barre-ligne {
+  margin-bottom: 1.3rem;
+}
+
+.barre-ligne:last-child {
+  margin-bottom: 0;
+}
+
+.barre-intitule {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+  font-size: 0.88rem;
+  color: var(--texte);
+}
+
+.barre-intitule span:last-child {
+  color: var(--texte-discret);
+}
+
+.barre-fond {
+  height: 8px;
+  border-radius: 999px;
+  background-color: var(--fond-carte-2);
+  overflow: hidden;
+}
+
+.barre-remplissage {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--couleur-principale), var(--couleur-secondaire));
+  transform-origin: left center;
+  animation: remplissage 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Les largeurs sont définies par des classes, pas en ligne */
+.niveau-85 { width: 85%; }
+.niveau-70 { width: 70%; }
+.niveau-60 { width: 60%; }
+.niveau-50 { width: 50%; }
+
+@keyframes remplissage {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.badge-techno {
+  padding: 1.4rem 1rem;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.badge-techno:hover {
+  transform: translateY(-3px);
+  border-color: var(--couleur-principale);
+}
+
+/* Liste des langues parlées : intitulé à gauche, niveau à droite */
+.liste-langues li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--bordure);
+  font-size: 0.93rem;
+}
+
+.liste-langues li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.liste-langues span {
+  font-size: 0.85rem;
+  color: var(--texte-discret);
+  white-space: nowrap;
+}
+
+.badge-techno .sigle {
+  margin-bottom: 0.5rem;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--couleur-principale);
+}
+
+.badge-techno span {
+  font-size: 0.82rem;
+  color: var(--texte-doux);
+}
+
+
+/* -----------------------------------------------------------
+   10 bis. CARTE DE CODE
+   Un bloc de code PHP présenté comme dans un éditeur. C'est du
+   texte réel, pas une image : il reste sélectionnable, lisible
+   par un lecteur d'écran et net à tous les niveaux de zoom.
+   ----------------------------------------------------------- */
+.carte-code {
+  margin: 0;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-code);
+  overflow: hidden;
+  box-shadow: var(--ombre);
+}
+
+.code-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bordure);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.code-points {
+  display: flex;
+  gap: 6px;
+}
+
+.code-points span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3a322b;
+}
+
+.code-points span:first-child { background-color: var(--couleur-secondaire); }
+.code-points span:nth-child(2) { background-color: var(--couleur-principale); }
+
+.code-fichier {
+  font-family: var(--police-code);
+  font-size: 0.78rem;
+  color: var(--code-gris);
+}
+
+.code-corps {
+  margin: 0;
+  padding: 1.3rem 1.4rem 1.5rem;
+  overflow-x: auto;            /* les lignes longues défilent au lieu de déborder */
+  font-family: var(--police-code);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--code-variable);
+  tab-size: 4;
+}
+
+.code-corps code {
+  font-family: inherit;
+}
+
+.c-cle     { color: var(--code-mot-cle); }
+.c-type    { color: var(--code-type); }
+.c-chaine  { color: var(--code-chaine); }
+.c-gris    { color: var(--code-gris); }
+.c-fn      { color: var(--code-type); }
+
+
+/* -----------------------------------------------------------
+   11. CARROUSEL (défilement horizontal CSS)
+   Réalisé avec scroll-snap : aucun JavaScript nécessaire.
+   ----------------------------------------------------------- */
+.carrousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+}
+
+.carrousel-vue {
+  flex: 0 0 clamp(250px, 44%, 400px);
+  scroll-snap-align: start;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* La vignette garde un rapport 16/10 quelle que soit l'image,
+   ce qui évite que la page « saute » pendant le chargement. */
+.carrousel-image {
+  width: 100%;
+  aspect-ratio: 2 / 1;   /* rapport des captures d'ecran */
+  object-fit: cover;
+  object-position: top center;
+  background-color: var(--fond-carte-2);
+  border-bottom: 1px solid var(--bordure);
+  height: auto;   /* laisse aspect-ratio decider */
+}
+
+.carrousel-legende {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+
+.carrousel-vue h3 {
+  margin-bottom: 0.3rem;
+}
+
+.carrousel-vue p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.carrousel-aide {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   12. PROJETS ET FILTRE CSS
+   Le filtre par technologie fonctionne sans JavaScript :
+   des boutons radio masqués + le sélecteur :has() masquent
+   les projets qui ne portent pas le mot-clé choisi.
+   ----------------------------------------------------------- */
+.carte-projet {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aperçu du projet : une vraie capture d'écran du site.
+   Le conteneur impose le rapport d'image, la capture le remplit
+   en étant cadrée par le haut (là où se trouve l'essentiel). */
+.apercu-projet {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+}
+
+.apercu-image {
+  width: 100%;
+  aspect-ratio: 2 / 1;   /* rapport des captures d'ecran */
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.4s ease;
+  height: auto;   /* laisse aspect-ratio decider */
+}
+
+.carte-projet:hover .apercu-image {
+  transform: scale(1.03);
+}
+
+.etat-projet {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond);
+  font-size: 0.72rem;
+  color: var(--texte-doux);
+}
+
+.etat-en-ligne {
+  color: var(--couleur-principale);
+  border-color: var(--couleur-principale);
+}
+
+.etat-en-cours {
+  color: var(--couleur-accent);
+  border-color: var(--couleur-accent);
+}
+
+.corps-projet {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.6rem 1.6rem 1.8rem;
+}
+
+.corps-projet h3 {
+  margin-bottom: 0.4rem;
+}
+
+.etiquettes-projet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.8rem 0 1.1rem;
+}
+
+.etiquettes-projet span {
+  padding: 0.28rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+  font-size: 0.74rem;
+  color: var(--texte-doux);
+}
+
+.liens-projet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+
+/* Barre de recherche par mots-clés */
+.barre-recherche {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+  margin-bottom: 1.4rem;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+}
+
+.barre-recherche svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--texte-discret);
+}
+
+.barre-recherche input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.7rem 0;
+  border: none;
+  background-color: transparent;
+  color: var(--texte);
+}
+
+.barre-recherche input:focus {
+  outline: none;
+}
+
+/* Étiquettes de filtre (labels associés aux boutons radio) */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.6rem;
+}
+
+.filtre-etiquette {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+  font-size: 0.8rem;
+  color: var(--texte-doux);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filtre-etiquette:hover {
+  color: var(--texte);
+  border-color: var(--couleur-principale);
+}
+
+/* Étiquette mise en évidence quand son bouton radio est coché */
+#filtre-tous:checked ~ .filtres [for="filtre-tous"],
+#filtre-react:checked ~ .filtres [for="filtre-react"],
+#filtre-supabase:checked ~ .filtres [for="filtre-supabase"],
+#filtre-html:checked ~ .filtres [for="filtre-html"],
+#filtre-gestion:checked ~ .filtres [for="filtre-gestion"] {
+  background-color: var(--couleur-principale);
+  border-color: var(--couleur-principale);
+  color: var(--texte-sur-accent);
+}
+
+/* Masquage des projets hors filtre */
+#filtre-react:checked ~ .grille-projets .carte-projet:not([data-technos~="react"]),
+#filtre-supabase:checked ~ .grille-projets .carte-projet:not([data-technos~="supabase"]),
+#filtre-html:checked ~ .grille-projets .carte-projet:not([data-technos~="html"]),
+#filtre-gestion:checked ~ .grille-projets .carte-projet:not([data-technos~="gestion"]) {
+  display: none;
+}
+
+
+/* -----------------------------------------------------------
+   13. FRISE CHRONOLOGIQUE
+   ----------------------------------------------------------- */
+.frise {
+  position: relative;
+  padding-left: 2.4rem;
+}
+
+.frise::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(var(--couleur-principale), var(--couleur-secondaire));
+}
+
+.frise-element {
+  position: relative;
+  padding-bottom: 2.4rem;
+}
+
+.frise-element:last-child {
+  padding-bottom: 0;
+}
+
+.frise-element::before {
+  content: "";
+  position: absolute;
+  left: -2.4rem;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--couleur-principale);
+  background-color: var(--fond);
+}
+
+.frise-date {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--police-titre);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-principale);
+}
+
+/* Bloc de citation / témoignage */
+.citation {
+  padding: 1.4rem 1.6rem;
+  border-left: 3px solid var(--couleur-principale);
+  border-radius: 0 var(--rayon-moyen) var(--rayon-moyen) 0;
+  background-color: var(--fond-carte);
+  font-style: italic;
+  color: var(--texte);
+}
+
+.citation footer {
+  margin-top: 0.8rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   14. FORMULAIRES
+   Validation HTML native uniquement (required, type="email",
+   minlength...). L'envoi côté serveur sera ajouté plus tard
+   avec PHP.
+   ----------------------------------------------------------- */
+.carte-formulaire {
+  padding: 2.2rem;
+  border-radius: var(--rayon-grand);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte);
+}
+
+.champ {
+  margin-bottom: 1.3rem;
+}
+
+.champ label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--texte);
+}
+
+.champ input,
+.champ textarea,
+.champ select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--rayon-petit);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+  color: var(--texte);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.champ input:focus,
+.champ textarea:focus,
+.champ select:focus {
+  outline: none;
+  border-color: var(--couleur-principale);
+  box-shadow: 0 0 0 3px var(--voile);
+}
+
+/* Retour visuel de la validation HTML native */
+.champ input:not(:placeholder-shown):invalid,
+.champ textarea:not(:placeholder-shown):invalid {
+  border-color: var(--couleur-accent);
+}
+
+.champ input:not(:placeholder-shown):valid,
+.champ textarea:not(:placeholder-shown):valid {
+  border-color: var(--couleur-principale);
+}
+
+.champ textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.champ-aide {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--texte-discret);
+}
+
+.ligne-champs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.3rem;
+}
+
+.champ-case {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 1.3rem;
+}
+
+.champ-case input {
+  width: auto;
+  margin-top: 0.35rem;
+}
+
+.champ-case label {
+  margin-bottom: 0;
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--texte-doux);
+}
+
+.avis-formulaire {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--rayon-petit);
+  border: 1px solid var(--bordure);
+  background-color: var(--fond-carte-2);
+  font-size: 0.84rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   15. BOUTONS ET PASTILLES
+   ----------------------------------------------------------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.bouton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bouton-principal {
+  background: linear-gradient(100deg, var(--couleur-principale), var(--couleur-secondaire));
+  color: var(--texte-sur-accent);
+}
+
+.bouton-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -12px var(--voile);
+}
+
+.bouton-contour {
+  background-color: transparent;
+  border-color: var(--bordure);
+  color: var(--texte);
+}
+
+.bouton-contour:hover {
+  border-color: var(--couleur-principale);
+  color: var(--couleur-principale);
+}
+
+.bouton-discret {
+  padding: 0.6rem 1.1rem;
+  background-color: var(--fond-carte-2);
+  font-size: 0.84rem;
+  color: var(--texte-doux);
+}
+
+.bouton-discret:hover {
+  color: var(--texte);
+}
+
+.bouton-inactif {
+  background-color: transparent;
+  border-color: var(--bordure);
+  color: var(--texte-discret);
+  cursor: not-allowed;
+}
+
+.bouton-pleine-largeur {
+  width: 100%;
+  justify-content: center;
+}
+
+.bouton-petit {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.82rem;
+}
+
+.bouton-espace {
+  margin-top: 1.4rem;
+}
+
+
+/* -----------------------------------------------------------
+   16. BLOCS D'APPEL À L'ACTION
+   ----------------------------------------------------------- */
+.bloc-action {
+  padding: 3rem;
+  text-align: center;
+  border-radius: var(--rayon-moyen);
+  border: 1px solid var(--bordure);
+  background: linear-gradient(160deg, var(--fond-carte), var(--fond-carte-2));
+}
+
+.bloc-action .surtitre {
+  justify-content: center;
+}
+
+.bloc-action h2 {
+  max-width: 32ch;
+  margin-inline: auto;
+}
+
+.bloc-action p {
+  max-width: 46ch;
+  margin-inline: auto;
+}
+
+.bloc-action-boutons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+
+/* -----------------------------------------------------------
+   17. PIED DE PAGE
+   ----------------------------------------------------------- */
+.pied {
+  margin-top: 60px;
+  padding: 60px 0 30px;
+  border-top: 1px solid var(--bordure);
+}
+
+.pied-haut {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.4rem;
+}
+
+.pied-marque p {
+  max-width: 34ch;
+  margin-top: 1rem;
+}
+
+.pied-colonne h3 {
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texte-discret);
+}
+
+.pied-colonne ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.pied-colonne a {
+  font-size: 0.92rem;
+  color: var(--texte-doux);
+  transition: color 0.2s ease;
+}
+
+.pied-colonne a:hover {
+  color: var(--couleur-principale);
+}
+
+.reseaux {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+
+.reseaux a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--bordure);
+  display: grid;
+  place-items: center;
+  color: var(--texte-doux);
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.reseaux a:hover {
+  border-color: var(--couleur-principale);
+  color: var(--couleur-principale);
+  transform: translateY(-3px);
+}
+
+.reseaux svg {
+  width: 17px;
+  height: 17px;
+}
+
+.pied-bas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--bordure);
+  font-size: 0.82rem;
+  color: var(--texte-discret);
+}
+
+
+/* -----------------------------------------------------------
+   18. ANIMATIONS D'APPARITION
+   Effet fade-in au chargement de la page, décalé section par
+   section grâce à des classes de délai.
+   ----------------------------------------------------------- */
+.apparition {
+  animation: apparaitre 0.7s ease both;
+}
+
+.delai-1 { animation-delay: 0.1s; }
+.delai-2 { animation-delay: 0.2s; }
+.delai-3 { animation-delay: 0.3s; }
+.delai-4 { animation-delay: 0.4s; }
+
+@keyframes apparaitre {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect des préférences système : pas d'animation si
+   l'utilisateur a demandé à les réduire. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* -----------------------------------------------------------
+   19. RESPONSIVE
+   Trois points de rupture : 980px (tablette paysage),
+   720px (tablette portrait / grand mobile) et 480px (mobile).
+   ----------------------------------------------------------- */
+
+/* --- Tablette paysage --- */
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visuel {
+    order: -1;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  .grille-2 { grid-template-columns: minmax(0, 1fr); }
+  .grille-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grille-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .grille-large { gap: 32px; }
+
+  .pied-haut { grid-template-columns: 1fr 1fr; }
+  .pied-marque { grid-column: 1 / -1; }
+}
+
+/* --- Tablette portrait et grand mobile --- */
+@media (max-width: 720px) {
+  :root {
+    --hauteur-entete: 68px;
+  }
+
+  /* Ne jamais utiliser la propriété raccourcie « padding » ici :
+     elle remettrait à zéro les marges latérales de .conteneur et
+     le texte collerait aux bords de l'écran. L'espacement vertical
+     est de toute façon déjà géré par le clamp() de .section. */
+
+  /* Le menu horizontal laisse place au bouton hamburger */
+  .liens-nav {
+    display: none;
+  }
+
+  .bouton-menu {
+    display: flex;
+  }
+
+  /* Ouverture du menu quand la case est cochée */
+  #bascule-menu:checked ~ .liens-nav {
+    position: absolute;
+    top: var(--hauteur-entete);
+    left: -24px;
+    right: -24px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.4rem 24px 2rem;
+    border-bottom: 1px solid var(--bordure);
+    background-color: var(--fond-carte);
+  }
+
+  /* Le hamburger devient une croix */
+  #bascule-menu:checked ~ .actions-nav .bouton-menu span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #bascule-menu:checked ~ .actions-nav .bouton-menu span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #bascule-menu:checked ~ .actions-nav .bouton-menu span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .ligne-titre {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Code un peu plus petit sur mobile : moins de lignes coupées
+     (le bloc reste défilable horizontalement de toute façon). */
+  .code-corps {
+    font-size: 0.72rem;
+    padding: 1.1rem 1.1rem 1.2rem;
+  }
+
+  .ligne-champs { grid-template-columns: 1fr; }
+
+  .pied-haut { grid-template-columns: 1fr; }
+
+  .pied-bas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .barre-recherche {
+    flex-wrap: wrap;
+  }
+
+  .carrousel-vue {
+    flex-basis: 80%;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 480px) {
+  /* Sur mobile, une seule colonne : les cartes de texte
+     restent lisibles au lieu d'être écrasées. */
+  .grille-3,
+  .grille-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Exception : les badges de technologies sont courts,
+     ils gardent deux colonnes. */
+  .grille-badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-chiffres {
+    flex-wrap: wrap;
+    row-gap: 1.2rem;
+  }
+
+  .hero-boutons .bouton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .bloc-action {
+    padding: 2rem 1.4rem;
+  }
+
+  .carte-formulaire {
+    padding: 1.5rem;
+  }
+
+  .carrousel-vue {
+    flex-basis: 88%;
+  }
+}

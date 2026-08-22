@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets — Elhadj Sylla M'Bengue</title>
+  <meta name="description" content="Les projets d'Elhadj Sylla M'Bengue : Sama Boutik, gestion de boutique pour commerçants, et Maison Fade, gestion de salon de coiffure.">
+  <meta name="author" content="Elhadj Sylla M'Bengue">
+
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<!-- EN-TÊTE ET NAVIGATION -->
+<header class="entete">
+  <div class="conteneur navigation">
+
+    <input type="checkbox" id="bascule-menu" class="commande-cachee">
+    <input type="checkbox" id="bascule-theme" class="commande-cachee">
+
+    <a href="../index.html" class="logo">
+      <span class="logo-marque">ES</span>
+      Elhadj Sylla
+    </a>
+
+    <nav class="liens-nav" aria-label="Navigation principale">
+      <a href="../index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="competences.html">Compétences</a>
+      <a href="projets.html" class="actif">Projets</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="actions-nav">
+      <label for="bascule-theme" class="bouton-theme" title="Basculer entre le mode sombre et le mode clair">
+        <svg class="icone-soleil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+        <svg class="icone-lune" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </label>
+
+      <label for="bascule-menu" class="bouton-menu" title="Ouvrir ou fermer le menu">
+        <span></span><span></span><span></span>
+      </label>
+    </div>
+
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="conteneur hero-page">
+    <p class="surtitre apparition">Mes projets</p>
+    <h1 class="apparition">Des applications construites pour être vraiment utilisées.</h1>
+    <p class="apparition delai-1">Chaque projet part d'un vrai problème rencontré par une vraie personne — un commerçant, un entrepreneur. Voici ceux sur lesquels j'ai travaillé.</p>
+  </section>
+
+  <!-- ==========================================================
+       RECHERCHE ET FILTRE
+       Le formulaire de recherche par mots-clés sera relié au
+       serveur avec PHP dans la suite du projet. Le filtre par
+       technologie, lui, fonctionne dès maintenant en CSS pur
+       (boutons radio masqués + sélecteur :not()).
+       ========================================================== -->
+  <section class="conteneur section">
+
+    <input type="radio" name="filtre-techno" id="filtre-tous" class="commande-cachee" checked>
+    <input type="radio" name="filtre-techno" id="filtre-react" class="commande-cachee">
+    <input type="radio" name="filtre-techno" id="filtre-supabase" class="commande-cachee">
+    <input type="radio" name="filtre-techno" id="filtre-html" class="commande-cachee">
+    <input type="radio" name="filtre-techno" id="filtre-gestion" class="commande-cachee">
+
+    <form class="barre-recherche apparition" method="get" action="projets.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+      </svg>
+      <label for="recherche-projet" class="commande-cachee">Rechercher un projet par mot-clé</label>
+      <input type="search" id="recherche-projet" name="motcle" placeholder="Rechercher un projet par mot-clé (boutique, salon, React...)" required>
+      <button type="submit" class="bouton bouton-principal bouton-petit">Rechercher</button>
+    </form>
+
+    <div class="filtres apparition delai-1">
+      <label for="filtre-tous" class="filtre-etiquette">Tous les projets</label>
+      <label for="filtre-react" class="filtre-etiquette">React</label>
+      <label for="filtre-supabase" class="filtre-etiquette">Supabase</label>
+      <label for="filtre-html" class="filtre-etiquette">HTML / CSS</label>
+      <label for="filtre-gestion" class="filtre-etiquette">Gestion</label>
+    </div>
+
+    <!-- ========================================================
+         LISTE DES PROJETS
+         ======================================================== -->
+    <div class="grille grille-2 grille-projets">
+
+      <!-- Projet 1 -->
+      <article class="carte carte-projet apparition delai-1" data-technos="react vite tailwind dexie supabase gestion boutique">
+        <div class="apercu-projet">
+          <img src="../images/projet-sama-boutik.jpg" alt="Aperçu du site Sama Boutik, application de gestion de boutique" class="apercu-image" width="1000" height="497" loading="lazy">
+          <p class="etat-projet etat-en-ligne">En ligne</p>
+        </div>
+        <div class="corps-projet">
+          <h3>Sama Boutik</h3>
+          <p>Application de gestion de boutique pensée pour les commerçants au Sénégal. Caisse, suivi des stocks et gestion des dettes clients, tout depuis le téléphone et en temps réel — pour arrêter de tout noter dans un cahier. Projet réalisé en binôme avec Cédric.</p>
+          <div class="etiquettes-projet">
+            <span>React</span><span>Vite</span><span>Tailwind</span><span>Dexie.js</span><span>Supabase</span>
+          </div>
+          <div class="liens-projet">
+            <a href="https://www.samaboutik.shop/" target="_blank" rel="noopener" class="bouton bouton-principal bouton-petit">
+              Voir le site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/>
+              </svg>
+            </a>
+            <span class="bouton bouton-inactif bouton-petit" title="Le dépôt est privé pour le moment">Code source privé</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 2 -->
+      <article class="carte carte-projet apparition delai-2" data-technos="react vite supabase gestion salon">
+        <div class="apercu-projet">
+          <img src="../images/projet-maison-fade.jpg" alt="Aperçu de l'application Maison Fade, gestion de salon de coiffure" class="apercu-image" width="1000" height="497" loading="lazy">
+          <p class="etat-projet etat-en-cours">En cours</p>
+        </div>
+        <div class="corps-projet">
+          <h3>Maison Fade</h3>
+          <p>Logiciel de gestion pour un salon de coiffure : caisse, agenda et rendez-vous, pointage de l'équipe, calcul des commissions et programme de fidélité — le tout dans une seule application, pour une vue d'ensemble complète de l'activité.</p>
+          <div class="etiquettes-projet">
+            <span>React</span><span>Vite</span><span>Supabase</span>
+          </div>
+          <div class="liens-projet">
+            <a href="https://maison-fade-ruro.vercel.app/" target="_blank" rel="noopener" class="bouton bouton-principal bouton-petit">
+              Voir la démo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/>
+              </svg>
+            </a>
+            <a href="https://github.com/Elhadjsylla/maison-fade" target="_blank" rel="noopener" class="bouton bouton-contour bouton-petit">Code source</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 3 -->
+      <article class="carte carte-projet apparition delai-3" data-technos="html css javascript vitrine">
+        <div class="apercu-projet">
+          <img src="../images/projet-darling-body.jpg" alt="Aperçu du site Darling Body, réalisé en HTML, CSS et JavaScript" class="apercu-image" width="1000" height="497" loading="lazy">
+          <p class="etat-projet etat-en-ligne">En ligne</p>
+        </div>
+        <div class="corps-projet">
+          <h3>Darling Body</h3>
+          <p>Mon tout premier projet : un site réalisé pour une amie, codé entièrement à la main en HTML, CSS et JavaScript, sans aucune bibliothèque. C'est avec lui que j'ai vraiment appris à structurer une page et à la rendre vivante.</p>
+          <div class="etiquettes-projet">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+          </div>
+          <div class="liens-projet">
+            <a href="https://darlingbody.com" target="_blank" rel="noopener" class="bouton bouton-principal bouton-petit">
+              Voir le site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Projet 4 -->
+      <article class="carte carte-projet apparition delai-3" data-technos="html css php portfolio">
+        <div class="apercu-projet">
+          <img src="../images/projet-portfolio.jpg" alt="Aperçu de la page d'accueil de ce portfolio" class="apercu-image" width="1000" height="500" loading="lazy">
+          <p class="etat-projet etat-en-ligne">Ce site</p>
+        </div>
+        <div class="corps-projet">
+          <h3>Ce portfolio</h3>
+          <p>Un site multipage responsive conçu entièrement en HTML et CSS, sans aucune bibliothèque externe. Menu mobile, mode sombre/clair, carrousel et filtre de projets : tout est réalisé en CSS pur. La partie serveur sera ajoutée en PHP dans la suite du cours.</p>
+          <div class="etiquettes-projet">
+            <span>HTML5</span><span>CSS3</span><span>Responsive</span><span>Accessibilité</span>
+          </div>
+          <div class="liens-projet">
+            <a href="../index.html" class="bouton bouton-principal bouton-petit">Retour à l'accueil</a>
+            <a href="https://github.com/Elhadjsylla" target="_blank" rel="noopener" class="bouton bouton-contour bouton-petit">Code source</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- APPEL À L'ACTION -->
+  <section class="conteneur section">
+    <div class="bloc-action apparition">
+      <h2>Un projet à me confier ?</h2>
+      <p>Décris-moi ton besoin via le formulaire de demande de projet, je reviens vers toi rapidement.</p>
+      <div class="bloc-action-boutons">
+        <a href="contact.html" class="bouton bouton-principal">Faire une demande de projet</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- PIED DE PAGE -->
+<footer class="pied">
+  <div class="conteneur">
+
+    <div class="pied-haut">
+      <div class="pied-marque">
+        <a href="../index.html" class="logo"><span class="logo-marque">ES</span> Elhadj Sylla</a>
+        <p>Développeur web en formation, orienté cybersécurité. Basé au Sénégal, ouvert aux missions à distance.</p>
+
+        <div class="reseaux">
+          <a href="https://github.com/Elhadjsylla" target="_blank" rel="noopener" aria-label="Mon profil GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-1.94c-3.2.7-3.87-1.54-3.87-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.18v3.23c0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/elhadj-sylla-mbengue-a527b7407/" target="_blank" rel="noopener" aria-label="Mon profil LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.75-2.05 4 0 4.4 2.6 4.4 6V21h-4v-5.5c0-1.3 0-3-1.85-3s-2.15 1.45-2.15 2.9V21H9z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/collet00patrick" target="_blank" rel="noopener" aria-label="Mon profil Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 22v-8.5H16l.5-3.5h-3V7.7c0-1 .3-1.7 1.7-1.7H16.5V2.8C16.2 2.8 15.2 2.7 14 2.7c-2.6 0-4.4 1.6-4.4 4.5V10H7v3.5h2.6V22h3.9z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/elhadjsylla_10" target="_blank" rel="noopener" aria-label="Mon profil Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="mailto:elhadjsylla667@gmail.com" aria-label="M'écrire un e-mail">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="pied-colonne">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="pied-colonne">
+        <h3>Ressources</h3>
+        <ul>
+          <li><a href="../cv/CV_Elhadj_Sylla.pdf" target="_blank" rel="noopener">Télécharger mon CV</a></li>
+          <li><a href="https://github.com/Elhadjsylla" target="_blank" rel="noopener">Mon GitHub</a></li>
+          <li><a href="mailto:elhadjsylla667@gmail.com">elhadjsylla667@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pied-bas">
+      <p>© 2026 Elhadj Sylla M'Bengue. Tous droits réservés.</p>
+      <p>Conçu et codé à la main — HTML &amp; CSS.</p>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
