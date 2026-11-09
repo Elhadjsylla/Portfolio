@@ -37,6 +37,12 @@ Le site est statique (HTML, CSS, JavaScript), sans serveur ni base de données.
 - Polices, icônes : copiées en local avec leur licence (`assets/licenses/`). Voir `assets/LICENSES.md`.
 - Aucun outil de suivi (Google Analytics, pixel Facebook, etc.) sans accord d'Elhadj. Si analytics un jour : préférer une solution sans cookies, et le mentionner sur le site.
 - Nouvelle bibliothèque JS : **demander d'abord**. Le site n'a pas de dépendance npm d'exécution, on garde ça.
+- **Seul service tiers autorisé : Formspree (`https://formspree.io`), pour le formulaire de contact uniquement** (page `contact.html`).
+  - Rôle : recevoir le message envoyé par `js/contact.js` (requête `fetch` POST en JSON) et le transmettre par e-mail à Elhadj. **Aucun script, style ni iframe de Formspree n'est chargé** : c'est une simple requête réseau.
+  - Données envoyées : nom, e-mail, sujet et message saisis par la personne, et rien d'autre. Elles servent uniquement à répondre (une phrase le dit sous le formulaire).
+  - L'identifiant du formulaire (`FORM_ENDPOINT` dans `js/config.js`) est **public** : ce n'est pas un secret. Aucune clé ni aucun token Formspree n'entre dans le dépôt.
+  - Tant que `FORM_ENDPOINT` est vide, rien n'est envoyé : le bouton ouvre un e-mail pré-rempli (`mailto:`).
+  - Tout autre service tiers (analytics, autre formulaire…) reste soumis à l'accord d'Elhadj.
 
 ## 5. Code front-end sûr
 
@@ -52,6 +58,7 @@ Le site est statique (HTML, CSS, JavaScript), sans serveur ni base de données.
 - `index.html` contient une CSP en `<meta>` (utile sur GitHub Pages, qui ne permet pas de poser des en-têtes).
 - `vercel.json` pose les vrais en-têtes sur Vercel : CSP (avec `frame-ancestors 'none'`), `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`, HSTS.
 - Politique de base : `default-src 'self'` ; scripts, styles, polices et images **uniquement** depuis le site lui-même (images `data:` autorisées pour les petites icônes intégrées).
+- **Une seule exception, validée par Elhadj :** `connect-src 'self' https://formspree.io`, pour le formulaire de contact (§4). Elle est **identique** dans le `<meta>` de chacune des 5 pages et dans `vercel.json`. `form-action 'none'` ne change pas : le formulaire est géré par JavaScript (`preventDefault`), il ne soumet jamais de formulaire HTML.
 - **Ne jamais assouplir la CSP** (`unsafe-inline`, `unsafe-eval`, domaines génériques `*`) pour « faire marcher » quelque chose. Corriger le code à la place, ou demander à Elhadj.
 - Toute modification de la CSP doit être signalée dans `PROGRESS.md` avec la raison.
 
