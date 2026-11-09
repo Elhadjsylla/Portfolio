@@ -1,0 +1,29 @@
+# Secrets (jamais dans le dépôt)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+
+# Système et éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Dépendances et builds (le site n'en a pas besoin)
+node_modules/
+dist/
+.vercel/
+
+# Archives et exports bruts
+*.zip
+*.rar
+*.7z
+*_original
+
+# Fichiers de travail
+*.log
+tmp/
