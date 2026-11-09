@@ -15,7 +15,7 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 |-------|----------|
 | Stack | HTML, CSS, JavaScript vanilla. Pas de React, Tailwind, ni build. |
 | Direction | Thème sombre bleu nuit, inspiré de la référence donnée par Elhadj (hero avec photo et halo, cartes arrondies, icônes de technologies). |
-| Positionnement | **Développeur web** uniquement. Cybersécurité retirée pour l'instant (à rajouter après la licence et les certifications). |
+| Positionnement | **Développeur full stack** (changé le 9 novembre 2026 ; avant : développeur web). Cybersécurité retirée pour l'instant (à rajouter après la licence et les certifications). |
 | Carte de code | Gardée depuis l'ancien site, onglet nommé `profil`, contenu en JavaScript, texte réel. |
 | Polices / icônes | Auto-hébergées (`assets/`). Sora, DM Sans, JetBrains Mono. Icônes officielles Devicon et Simple Icons. |
 | Sécurité | CSP stricte (meta + `vercel.json`), pas de script ni de style inline, pas de CDN. Voir `SECURITY_RULES.md`. |
@@ -122,6 +122,12 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 ---
 
 ## Journal
+
+### 2026-11-09 (full stack, Python, Linux, devise du pied de page)
+- Branche `content/full-stack-linux` (depuis `feat/footer`). **Positionnement changé à la demande d'Elhadj : « développeur full stack » remplace « développeur web »** partout sur le site (titres, descriptions, accroche, carte `profil`, pied de page). `AGENTS.md` dit encore « développeur web » : à mettre à jour **sur ta demande explicite** (je n'y touche pas sans elle). Rappel : sur Sama Boutik, tu as fait la base de données et le back-end ; EcoSurv, tout.
+- Compétences : **Python passe à « Base solide »** ; **Linux ajouté** (groupe Outils, « Base solide »), avec son icône Devicon `linux-plain` (MIT, remplissage clair pour la pastille sombre), `assets/LICENSES.md` mis à jour.
+- Pied de page : à côté du nom, la devise « Concevoir · Développer · Mettre en ligne » (d'après tes rôles sur EcoSurv : interface, base de données, développement, mise en ligne). À valider : tu peux la changer.
+- Tests : 5 pages × 2 thèmes × 360, 390 et 1440 px sans erreur, contrastes AA, zones tactiles ≥ 44 px, clavier, mouvement réduit.
 
 ### 2026-11-09 (nouveau pied de page)
 - Branche `feat/footer` (depuis `content/apropos-competences`). Pied de page refait dans les **5 pages** sur le modèle montré par Elhadj : à gauche logo photo, « Contact / collaboration », grand titre « Un stage, une mission ou un projet ? » et l'e-mail souligné ; à droite quatre colonnes (Explorer, Réseaux, Contact direct avec « Écrire un message » et « Télécharger mon CV » sans icône, Base avec Dakar et la disponibilité). Aucun numéro de téléphone, aucun bouton flottant, aucun JavaScript ajouté, pas de changement de CSP.

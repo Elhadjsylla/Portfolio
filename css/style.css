@@ -963,8 +963,10 @@ main:focus { outline: none; }
 
 .footer__legal {
   margin-top: clamp(40px, 6vw, 64px); padding-top: 24px;
-  border-top: 1px solid var(--border); text-align: center; font-size: .92rem;
+  border-top: 1px solid var(--border); font-size: .92rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px;
 }
+.footer__tag { color: var(--text); font: 500 .78rem/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 
 @media (max-width: 1000px) {
   .footer__top { grid-template-columns: minmax(0, 1fr); }
