@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 
   <title>Elhadj Sylla M'Bengue, développeur web à Dakar</title>
-  <meta name="description" content="Portfolio d'Elhadj Sylla M'Bengue, développeur web basé à Dakar. Applications web pour commerçants et entrepreneurs. Disponible pour des stages et des missions à distance.">
+  <meta name="description" content="Portfolio d'Elhadj Sylla M'Bengue, développeur web basé à Dakar. Applications web pour des commerçants et des écoles. Disponible pour des stages et des missions à distance.">
   <meta name="author" content="Elhadj Sylla M'Bengue">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
   <meta property="og:title" content="Elhadj Sylla M'Bengue, développeur web">
-  <meta property="og:description" content="Des applications web pensées pour de vrais usages : caisse, stock, agenda. Basé à Dakar.">
+  <meta property="og:description" content="Des applications web pensées pour de vrais usages : caisse, stock, paiements scolaires. Basé à Dakar.">
   <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/">
   <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
   <meta property="og:image:width" content="800">
@@ -85,7 +85,7 @@
 
           <p class="hero__lede hero__in">
             Je construis des applications web pour de vrais usages : tenir une caisse,
-            suivre un stock, organiser l'agenda d'un salon. Étudiant en Licence 2
+            suivre un stock, gérer les paiements d'une école. Étudiant en Licence 2
             informatique à l'ESCOA.
           </p>
 
@@ -134,33 +134,27 @@
 
           <article class="card" data-reveal data-spot>
             <div class="card__media">
-              <img src="images/projet-sama-boutik.jpg" data-fallback="images/placeholder-project.svg"
-                   alt="Capture d'écran de Sama Boutik" width="800" height="500" loading="lazy">
+              <picture><source type="image/webp" srcset="images/projets/sama-boutik-bureau.webp"><img src="images/projets/sama-boutik-bureau.jpg" data-fallback="images/placeholder-project.svg" alt="Page d'accueil publique de Sama Boutik sur ordinateur : titre « Gère ta boutique sans perdre un centime », boutons d'essai et de démonstration." width="1200" height="750" loading="lazy"></picture>
               <span class="badge badge--live">En ligne</span>
             </div>
             <div class="card__body">
               <h3>Sama Boutik</h3>
-              <p>Caisse, stock et dettes clients, pensé pour les commerçants au Sénégal. Tout tient dans leur poche, en temps réel.</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Supabase</li>
-              </ul>
-              <a class="card__link" href="https://www.samaboutik.shop/" target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de Sama Boutik (nouvel onglet)</span></a>
+              <p>Caisse, stock et dettes clients pour les commerçants, depuis un téléphone.</p>
+              <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li></ul>
+              <a class="card__link" href="projets.html#sama-boutik">Voir le projet<span class="sr-only"> Sama Boutik</span></a>
             </div>
           </article>
 
           <article class="card" data-reveal data-spot>
             <div class="card__media">
-              <img src="images/projet-maison-fade.jpg" data-fallback="images/placeholder-project.svg"
-                   alt="Capture d'écran de Maison Fade" width="800" height="500" loading="lazy">
-              <span class="badge badge--demo">Démo en ligne</span>
+              <picture><source type="image/webp" srcset="images/projets/ecosurv-bureau.webp"><img src="images/projets/ecosurv-bureau.jpg" data-fallback="images/placeholder-project.svg" alt="Page d'accueil publique d'EcoSurv sur ordinateur : « Chaque paiement de scolarité suivi, du guichet au reçu PDF », avec un exemple fictif de paiement." width="1200" height="750" loading="lazy"></picture>
+              <span class="badge badge--live">En ligne</span>
             </div>
             <div class="card__body">
-              <h3>Maison Fade</h3>
-              <p>Un salon de coiffure géré depuis une seule application : caisse, agenda, pointage, commissions et fidélité.</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>React</li><li>Vite</li><li>Supabase</li>
-              </ul>
-              <a class="card__link" href="https://maison-fade-ruro.vercel.app/" target="_blank" rel="noopener noreferrer">Voir la démo<span class="sr-only"> de Maison Fade (nouvel onglet)</span></a>
+              <h3>EcoSurv</h3>
+              <p>Gestion scolaire et paiements pour les écoles en Mauritanie.</p>
+              <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li></ul>
+              <a class="card__link" href="projets.html#ecosurv">Voir le projet<span class="sr-only"> EcoSurv</span></a>
             </div>
           </article>
 
@@ -208,7 +202,7 @@
           <div class="about-mini__text">
             <h2 id="titre-apropos">À propos</h2>
             <p>Étudiant en Licence 2 informatique à l'ESCOA, à Dakar.</p>
-            <p>Je construis des applications pour des commerçants et des entrepreneurs : une caisse, un stock, l'agenda d'un salon.</p>
+            <p>Je construis des applications pour des commerçants et des écoles : une caisse, un stock, des paiements de scolarité.</p>
             <p>Disponible pour des stages et des missions, à Dakar ou à distance.</p>
             <a class="btn" href="apropos.html" data-magnetic>En savoir plus</a>
           </div>
@@ -253,6 +247,7 @@
             <li><a class="flink flink--github" href="https://github.com/Elhadjsylla" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (nouvel onglet)</span></a></li>
             <li><a class="flink flink--linkedin" href="https://www.linkedin.com/in/elhadj-sylla-mbengue-a527b7407/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (nouvel onglet)</span></a></li>
             <li><a class="flink flink--instagram" href="https://www.instagram.com/elhadjsylla_10" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (nouvel onglet)</span></a></li>
+            <li><a class="flink flink--facebook" href="https://www.facebook.com/collet00patrick" target="_blank" rel="noopener noreferrer">Facebook<span class="sr-only"> (nouvel onglet)</span></a></li>
           </ul>
         </div>
 

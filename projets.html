@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 
   <title>Projets | Elhadj Sylla M'Bengue</title>
-  <meta name="description" content="Les applications d'Elhadj Sylla M'Bengue : Sama Boutik, une caisse et un stock pour commerçants, et Maison Fade, une application pour un salon de coiffure.">
+  <meta name="description" content="Sama Boutik, application de caisse, de stock et de dettes clients, et EcoSurv, gestion scolaire et paiements pour les écoles en Mauritanie : les projets d'Elhadj Sylla M'Bengue.">
   <meta name="author" content="Elhadj Sylla M'Bengue">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
   <meta property="og:title" content="Projets d'Elhadj Sylla M'Bengue">
-  <meta property="og:description" content="Sama Boutik et Maison Fade : des applications web pour des commerçants et un salon de coiffure.">
+  <meta property="og:description" content="Sama Boutik et EcoSurv : des applications web pour des commerçants et des écoles.">
   <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/projets.html">
   <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
   <meta property="og:image:width" content="800">
@@ -78,72 +78,104 @@
       </div>
     </header>
 
-    <section class="section" aria-label="Liste des projets">
+    <!-- ============ PROJETS ============
+         Modèle pour un nouveau projet : copier un bloc <article class="project"> ci-dessous (alterner project--flip).
+         Règles : SECURITY_RULES.md §3. Captures de pages publiques, sans donnée réelle. -->
+    <section class="section section--projects" aria-label="Projets">
+      <div class="wrap projects">
+
+        <article class="project" id="sama-boutik" aria-labelledby="titre-sama-boutik">
+          <div class="project__shots" data-reveal>
+            <div class="browser"><div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source type="image/webp" srcset="images/projets/sama-boutik-bureau.webp"><img src="images/projets/sama-boutik-bureau.jpg" data-fallback="images/placeholder-project.svg" alt="Page d'accueil publique de Sama Boutik sur ordinateur : titre « Gère ta boutique sans perdre un centime », boutons d'essai et de démonstration." width="1200" height="750" loading="lazy"></picture></div>
+            <div class="phone"><picture><source type="image/webp" srcset="images/projets/sama-boutik-mobile.webp"><img src="images/projets/sama-boutik-mobile.jpg" data-fallback="images/placeholder-project.svg" alt="La même page de Sama Boutik sur téléphone." width="390" height="844" loading="lazy"></picture></div>
+          </div>
+
+          <div class="project__body" data-reveal>
+            <p class="badge badge--live badge--static">En ligne</p>
+            <h2 id="titre-sama-boutik">Sama Boutik</h2>
+            <p class="project__lede">Une application de gestion commerciale pour les commerçants : la caisse, le stock et les dettes clients, depuis un téléphone.</p>
+
+            <h3>Le problème</h3>
+            <p>Dans une petite boutique, les crédits accordés aux clients se notent sur un cahier, le stock se compte à la main et la caisse se recompte chaque soir. Difficile de savoir en un coup d'œil qui doit de l'argent et ce qu'il reste en rayon.</p>
+
+            <h3>Ce que fait l'application</h3>
+            <ul class="project__list">
+              <li>Enregistrer les ventes à la caisse</li>
+              <li>Suivre les stocks</li>
+              <li>Gérer les dettes des clients</li>
+            </ul>
+
+            <h3>Mon rôle</h3>
+            <p>J'ai conçu l'interface, développé l'application, mis le site en ligne et travaillé son référencement.</p>
+
+            <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li></ul>
+
+            <p class="project__cta"><a class="btn" href="https://www.samaboutik.shop/" target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de Sama Boutik (nouvel onglet)</span></a></p>
+          </div>
+        </article>
+
+        <article class="project project--flip" id="ecosurv" aria-labelledby="titre-ecosurv">
+          <div class="project__shots" data-reveal>
+            <div class="browser"><div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source type="image/webp" srcset="images/projets/ecosurv-bureau.webp"><img src="images/projets/ecosurv-bureau.jpg" data-fallback="images/placeholder-project.svg" alt="Page d'accueil publique d'EcoSurv sur ordinateur : « Chaque paiement de scolarité suivi, du guichet au reçu PDF », avec un exemple fictif de paiement." width="1200" height="750" loading="lazy"></picture></div>
+            <div class="phone"><picture><source type="image/webp" srcset="images/projets/ecosurv-mobile.webp"><img src="images/projets/ecosurv-mobile.jpg" data-fallback="images/placeholder-project.svg" alt="La même page d'EcoSurv sur téléphone." width="390" height="844" loading="lazy"></picture></div>
+          </div>
+
+          <div class="project__body" data-reveal>
+            <p class="badge badge--live badge--static">En ligne</p>
+            <h2 id="titre-ecosurv">EcoSurv</h2>
+            <p class="project__lede">Une plateforme de gestion pour les écoles : suivi des élèves et des paiements de scolarité, en Mauritanie.</p>
+
+            <h3>Le problème</h3>
+            <p>Dans une école, les échéances, les acomptes et les reçus se suivent souvent sur papier. Savoir qui doit encore de l'argent et retrouver ce qui a déjà été payé prend du temps.</p>
+
+            <h3>Ce que fait l'application</h3>
+            <ul class="project__list">
+              <li>Inscrire les élèves par classe</li>
+              <li>Fixer les barèmes en MRU</li>
+              <li>Encaisser en espèces et par mobile money</li>
+              <li>Émettre des reçus PDF numérotés</li>
+              <li>Suivre les absences</li>
+            </ul>
+
+            <h3>Mon rôle</h3>
+            <p>J'ai conçu l'interface, développé la plateforme et l'ai mise en ligne.</p>
+
+            <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li></ul>
+
+            <p class="project__cta"><a class="btn" href="https://www.ecosurv.app/" target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de EcoSurv (nouvel onglet)</span></a></p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ PREMIER SITE ============ -->
+    <section class="section" aria-label="Mon premier site">
       <div class="wrap">
-        <div class="cards">
+        <article class="project project--compact" id="darling-body" aria-labelledby="titre-darling-body">
+          <div class="project__shots" data-reveal>
+            <div class="browser"><div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i></div><picture><source type="image/webp" srcset="images/projets/darling-body-bureau.webp"><img src="images/projets/darling-body-bureau.jpg" data-fallback="images/placeholder-project.svg" alt="Page d'accueil du site Darling Body : produits de soin sur fond rose et titre « Sculptez votre corps, chaque jour »." width="1000" height="496" loading="lazy"></picture></div>
+          </div>
+          <div class="project__body" data-reveal>
+            <p class="eyebrow">Mon premier site</p>
+            <h2 id="titre-darling-body">Darling Body</h2>
+            <p class="project__lede">Mon tout premier site, codé entièrement à la main, en HTML, CSS et JavaScript.</p>
+            <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/html5.svg" alt="" width="16" height="16"></span>HTML</li><li><span class="tag-ico"><img src="assets/icons/tech/css3.svg" alt="" width="16" height="16"></span>CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/javascript.svg" alt="" width="16" height="16"></span>JavaScript</li></ul>
+            <p class="project__cta"><a class="btn btn--ghost" href="https://darlingbody.com" target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de Darling Body (nouvel onglet)</span></a></p>
+          </div>
+        </article>
+      </div>
+    </section>
 
-          <article class="card" data-reveal data-spot>
-            <div class="card__media">
-              <img src="images/projet-sama-boutik.jpg" data-fallback="images/placeholder-project.svg"
-                   alt="Capture d'écran de Sama Boutik" width="800" height="500" loading="lazy">
-              <span class="badge badge--live">En ligne</span>
-            </div>
-            <div class="card__body">
-              <h2>Sama Boutik</h2>
-              <p>Caisse, stock et dettes clients, pensé pour les commerçants au Sénégal. Tout tient dans leur poche, en temps réel.</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Supabase</li>
-              </ul>
-              <a class="card__link" href="https://www.samaboutik.shop/" target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de Sama Boutik (nouvel onglet)</span></a>
-            </div>
-          </article>
-
-          <article class="card" data-reveal data-spot>
-            <div class="card__media">
-              <img src="images/projet-maison-fade.jpg" data-fallback="images/placeholder-project.svg"
-                   alt="Capture d'écran de Maison Fade" width="800" height="500" loading="lazy">
-              <span class="badge badge--demo">Démo en ligne</span>
-            </div>
-            <div class="card__body">
-              <h2>Maison Fade</h2>
-              <p>Un salon de coiffure géré depuis une seule application : caisse, agenda, pointage, commissions et fidélité.</p>
-              <ul class="tags" aria-label="Technologies">
-                <li>React</li><li>Vite</li><li>Supabase</li>
-              </ul>
-              <a class="card__link" href="https://maison-fade-ruro.vercel.app/" target="_blank" rel="noopener noreferrer">Voir la démo<span class="sr-only"> de Maison Fade (nouvel onglet)</span></a>
-            </div>
-          </article>
-
-          <!--
-            MODÈLE POUR AJOUTER UN PROJET (copie ce bloc, remplis, supprime les commentaires).
-            Règles : voir SECURITY_RULES.md §3. Aucun projet sous contrat/NDA sans accord écrit.
-            Captures avec données fictives uniquement.
-
-            EcoSurv : NON PUBLIÉ, en attente de l'accord de Babacar SY.
-
-            <article class="card" data-reveal data-spot>
-              <div class="card__media">
-                <img src="images/projet-NOM.jpg" data-fallback="images/placeholder-project.svg"
-                     alt="Capture d'écran de NOM" width="800" height="500" loading="lazy">
-                <span class="badge badge--live">En ligne</span>
-              </div>
-              <div class="card__body">
-                <h3>NOM</h3>
-                <p>Description en une ou deux phrases.</p>
-                <ul class="tags" aria-label="Technologies"><li>Techno</li></ul>
-                <a class="card__link" href="https://..." target="_blank" rel="noopener noreferrer">Voir le site<span class="sr-only"> de NOM (nouvel onglet)</span></a>
-              </div>
-            </article>
-          -->
-
-          <aside class="card card--cta" data-reveal data-spot aria-label="Proposer un projet">
-            <div class="card__body">
-              <h2>Un projet en tête ?</h2>
-              <p>Un site, une application, un outil pour ton activité : on peut en parler.</p>
-              <a class="btn" href="contact.html" data-magnetic>Parlons-en</a>
-            </div>
-          </aside>
-
+    <!-- ============ CONTACT ============ -->
+    <section class="section" aria-labelledby="titre-contact">
+      <div class="wrap">
+        <div class="contact" data-reveal data-spot>
+          <h2 id="titre-contact">Un projet en tête ? Parlons-en.</h2>
+          <p>Pour un stage, une collaboration ou un site à construire, écris-moi.</p>
+          <p class="contact__actions">
+            <a class="btn" href="contact.html" data-magnetic>Me contacter</a>
+          </p>
         </div>
       </div>
     </section>
@@ -172,6 +204,7 @@
             <li><a class="flink flink--github" href="https://github.com/Elhadjsylla" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (nouvel onglet)</span></a></li>
             <li><a class="flink flink--linkedin" href="https://www.linkedin.com/in/elhadj-sylla-mbengue-a527b7407/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (nouvel onglet)</span></a></li>
             <li><a class="flink flink--instagram" href="https://www.instagram.com/elhadjsylla_10" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (nouvel onglet)</span></a></li>
+            <li><a class="flink flink--facebook" href="https://www.facebook.com/collet00patrick" target="_blank" rel="noopener noreferrer">Facebook<span class="sr-only"> (nouvel onglet)</span></a></li>
           </ul>
         </div>
 
