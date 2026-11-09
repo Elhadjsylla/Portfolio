@@ -20,6 +20,11 @@
       const swap = () => {
         if (img.dataset.failed) return;
         img.dataset.failed = '1';
+        // Dans un <picture>, les <source> l'emportent sur <img> : on les retire.
+        const pic = img.parentElement;
+        if (pic && pic.tagName === 'PICTURE') $$('source', pic).forEach((src) => src.remove());
+        img.removeAttribute('srcset');
+        img.removeAttribute('sizes');
         img.src = img.dataset.fallback;
       };
       img.addEventListener('error', swap);
@@ -27,11 +32,8 @@
     });
   });
 
-  /* ---------- Année et heure de Dakar ---------- */
+  /* ---------- Heure de Dakar (accueil) ---------- */
   safe('date', () => {
-    const year = $('#annee');
-    if (year) year.textContent = new Date().getFullYear();
-
     const clock = $('#heure-dakar');
     if (clock) {
       const fmt = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Dakar' });
@@ -39,6 +41,39 @@
       tick();
       setInterval(tick, 20000);
     }
+  });
+
+  /* ---------- Thème clair / sombre ---------- */
+  safe('theme', () => {
+    const btn = $('.theme-toggle');
+    if (!btn) return;
+    const metas = $$('meta[name="theme-color"]');
+    const current = () => (root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+    const apply = (theme) => {
+      root.setAttribute('data-theme', theme);
+      btn.setAttribute('aria-pressed', String(theme === 'dark'));
+      metas.forEach((m) => m.setAttribute('content', theme === 'light' ? '#F3F7FE' : '#06142A'));
+    };
+    apply(current());
+
+    btn.addEventListener('click', () => {
+      const next = current() === 'dark' ? 'light' : 'dark';
+      if (animated) {                       // transition douce, absente si mouvement réduit
+        root.classList.add('theme-anim');
+        setTimeout(() => root.classList.remove('theme-anim'), 350);
+      }
+      apply(next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* stockage bloqué : le choix vaut pour cette page */ }
+    });
+
+    // Sans choix mémorisé, on suit les changements du système
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    const follow = (e) => {
+      let saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (err) { /* ignore */ }
+      if (saved !== 'light' && saved !== 'dark') apply(e.matches ? 'light' : 'dark');
+    };
+    if (mq.addEventListener) mq.addEventListener('change', follow);
   });
 
   /* ---------- Menu mobile ---------- */
@@ -60,7 +95,7 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 920) close(); });
   });
 
-  /* ---------- En-tête, barre de progression, section active ---------- */
+  /* ---------- En-tête et barre de progression ---------- */
   safe('scroll', () => {
     const header = $('.header');
     const bar = $('.progress');
@@ -79,19 +114,6 @@
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }, { passive: true });
     update();
-
-    const links = new Map($$('[data-nav]').map((a) => [a.dataset.nav, a]));
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          links.forEach((a) => a.removeAttribute('aria-current'));
-          const active = links.get(entry.target.id);
-          if (active) active.setAttribute('aria-current', 'true');
-        });
-      }, { rootMargin: '-45% 0px -50% 0px' });
-      $$('main section[id]').forEach((s) => io.observe(s));
-    }
   });
 
   /* ---------- Apparition au défilement ---------- */
