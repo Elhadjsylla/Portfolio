@@ -123,6 +123,12 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 
 ## Journal
 
+### 2026-11-09 (nouveau pied de page)
+- Branche `feat/footer` (depuis `content/apropos-competences`). Pied de page refait dans les **5 pages** sur le modèle montré par Elhadj : à gauche logo photo, « Contact / collaboration », grand titre « Un stage, une mission ou un projet ? » et l'e-mail souligné ; à droite quatre colonnes (Explorer, Réseaux, Contact direct avec « Écrire un message » et « Télécharger mon CV » sans icône, Base avec Dakar et la disponibilité). Aucun numéro de téléphone, aucun bouton flottant, aucun JavaScript ajouté, pas de changement de CSP.
+- Bloc « Un projet en tête ? Parlons-en. » **retiré de l'accueil** : le pied de page joue ce rôle sur toutes les pages (choix laissé à l'agent par Elhadj).
+- Mêmes retouches sur la branche précédente : phrase « Ce portfolio a été construit ainsi » retirée, définitions UI/UX et marketing digital, légende des niveaux sur Compétences, Facebook sur l'accueil.
+- Tests : 5 pages × 2 thèmes × 360, 390 et 1440 px sans erreur, contrastes AA, zones tactiles ≥ 44 px, clavier, mouvement réduit.
+
 ### 2026-11-09 (À propos et Compétences détaillées)
 - Branche `content/apropos-competences`, créée depuis `feat/contact` : `feat/contact` n'est pas fusionnée dans `dev` (qui contient encore l'ancien site), donc la branche empile les travaux précédents.
 - **À propos** : en-tête (photo carrée cadrée sur le visage, 4 phrases, liens Projets et Contact), parcours daté (bac 2024, ESCOA décembre 2024, stage APIM septembre–octobre 2025, L2 en cours), formation et stage service par service (sans nom de personne, sans chiffre, sans règle interne), « D'où ça vient », deux principes de travail, paragraphe « Travailler avec l'IA » (ancre `#ia`), ce que j'apprends, langues avec niveaux, hors écran, ce que je cherche avec bouton Contact et carte `profil` mise à jour. Les savoir-être n'y sont pas répétés.
