@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Politique de sécurité (utile sur GitHub Pages). Sur Vercel, vercel.json pose la version complète. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+
+  <title>Contact | Elhadj Sylla M'Bengue</title>
+  <meta name="description" content="Contacter Elhadj Sylla M'Bengue, développeur web à Dakar, pour un stage, une collaboration ou un site à construire.">
+  <meta name="author" content="Elhadj Sylla M'Bengue">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F3F7FE" media="(prefers-color-scheme: light)">
+
+  <!-- Aperçu de partage. Quand le nom de domaine sera branché sur Vercel, remplacer les URL absolues. -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
+  <meta property="og:title" content="Contacter Elhadj Sylla M'Bengue">
+  <meta property="og:description" content="Pour un stage, une collaboration ou un site à construire : écris-moi.">
+  <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/contact.html">
+  <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="1067">
+  <meta property="og:image:alt" content="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/boot.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============ EN-TÊTE ============
+       Identique sur les 5 pages : toute modification se fait partout en même temps (voir AGENTS.md). -->
+  <header class="header" id="haut">
+    <div class="wrap header__in">
+      <a class="brand" href="index.html" aria-label="Elhadj Sylla, accueil">
+        <span class="brand__mark">ES</span>
+        <span class="brand__name">Elhadj Sylla</span>
+      </a>
+
+      <nav class="nav" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="projets.html">Projets</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-btn theme-toggle" type="button" aria-pressed="true" aria-label="Mode sombre">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+
+    <header class="page-head">
+      <div class="wrap">
+        <h1>Contact</h1>
+        <p>Pour un stage, une collaboration ou un site à construire, écris-moi.</p>
+      </div>
+    </header>
+
+    <section class="section" aria-label="Me joindre">
+      <div class="wrap">
+        <div class="contact contact--page" data-reveal data-spot>
+          <p class="contact__mail"><a href="mailto:elhadjsylla667@gmail.com" id="adresse-mail">elhadjsylla667@gmail.com</a></p>
+
+          <p class="contact__actions">
+            <a class="btn" href="mailto:elhadjsylla667@gmail.com" data-magnetic>Envoyer un e-mail</a>
+            <button class="btn btn--ghost" type="button" id="copier-mail" data-magnetic>Copier l'adresse</button>
+          </p>
+          <p class="sr-only" id="copie-statut" role="status" aria-live="polite"></p>
+
+          <ul class="socials socials--center" aria-label="Mes profils en ligne">
+            <li><a class="social social--github" href="https://github.com/Elhadjsylla" target="_blank" rel="noopener noreferrer" aria-label="GitHub (nouvel onglet)"></a></li>
+            <li><a class="social social--linkedin" href="https://www.linkedin.com/in/elhadj-sylla-mbengue-a527b7407/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)"></a></li>
+            <li><a class="social social--instagram" href="https://www.instagram.com/elhadjsylla_10" target="_blank" rel="noopener noreferrer" aria-label="Instagram (nouvel onglet)"></a></li>
+            <li><a class="social social--facebook" href="https://www.facebook.com/collet00patrick" target="_blank" rel="noopener noreferrer" aria-label="Facebook (nouvel onglet)"></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ PIED DE PAGE ============
+       Identique sur les 5 pages : toute modification se fait partout en même temps (voir AGENTS.md). -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__cols">
+        <nav aria-label="Navigation du pied de page">
+          <p class="footer__title">Navigation</p>
+          <ul class="footer__list">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div>
+          <p class="footer__title">Réseaux</p>
+          <ul class="footer__list">
+            <li><a class="flink flink--github" href="https://github.com/Elhadjsylla" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (nouvel onglet)</span></a></li>
+            <li><a class="flink flink--linkedin" href="https://www.linkedin.com/in/elhadj-sylla-mbengue-a527b7407/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (nouvel onglet)</span></a></li>
+            <li><a class="flink flink--instagram" href="https://www.instagram.com/elhadjsylla_10" target="_blank" rel="noopener noreferrer">Instagram<span class="sr-only"> (nouvel onglet)</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__title">Contact</p>
+          <ul class="footer__list">
+            <li><a class="footer__mail" href="mailto:elhadjsylla667@gmail.com">elhadjsylla667@gmail.com</a></li>
+            <li><span>Dakar, Sénégal</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__cv">
+        <a class="btn btn--big btn--cv" href="cv/CV_Elhadj_Sylla.pdf" download>Télécharger mon CV</a>
+      </div>
+
+      <p class="footer__legal">© 2026 Elhadj Sylla M'Bengue</p>
+    </div>
+  </footer>
+
+</body>
+</html>
