@@ -200,6 +200,7 @@ a { color: inherit; }
 ul { margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, p, figure { margin: 0; }
 button { font: inherit; color: inherit; }
+[hidden] { display: none !important; }   /* l'attribut hidden doit toujours gagner, même sur un élément en display: grid */
 
 :focus-visible {
   outline: 3px solid var(--focus);
@@ -847,7 +848,8 @@ main:focus { outline: none; }
 /* champ piège anti-robots : hors écran, sans style inline */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-.form__statut { min-height: 1.5em; color: var(--muted); }
+.form__statut { color: var(--muted); }
+.form__statut:empty { height: 0; margin-block: -10px; }   /* reste affiché pour les lecteurs d'écran, sans vide visible */
 .form__statut.is-error { color: var(--danger); font-weight: 500; }
 .form__statut a, .notice a, .infos a { text-decoration: underline; text-underline-offset: 4px; }
 .form .btn { justify-self: start; }
@@ -862,6 +864,8 @@ main:focus { outline: none; }
 .infos__row { display: grid; gap: 6px; }
 .infos dt { color: var(--muted); font-size: .85rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .infos dd { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.infos__status { flex-wrap: nowrap !important; align-items: flex-start !important; }
+.infos__status .chip__dot { margin-top: .6em; }
 .infos a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; overflow-wrap: anywhere; }
 
 .nets { display: grid; gap: 10px; }
