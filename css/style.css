@@ -450,7 +450,7 @@ main:focus { outline: none; }
 .social--linkedin, .flink--linkedin { --icon: url("../assets/icons/social/linkedin.svg"); }
 .social--instagram, .flink--instagram { --icon: url("../assets/icons/social/instagram.svg"); }
 .social--facebook, .flink--facebook { --icon: url("../assets/icons/social/facebook.svg"); }
-.flink--cv { --icon: url("../assets/icons/ui/download.svg"); }
+.flink--cv::before { display: none; }   /* le lien du CV n'a pas d'icône : juste le texte */
 
 /* portrait (accueil) */
 .portrait { position: relative; justify-self: center; width: min(100%, 420px); }
@@ -1054,6 +1054,17 @@ main:focus { outline: none; }
   .about-head__photo { width: 170px; border-radius: 28px; }
   .facts, .principles { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* définitions courtes (UI/UX, marketing digital) et légende des repères de niveau */
+.defs { display: grid; gap: 12px; margin: 0; max-width: 44em; }
+.def { padding: 14px 18px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+.def dt { font: 600 1rem/1.3 var(--display); margin-bottom: 4px; }
+.def dd { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.prose .defs { width: 100%; }
+
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 14px; margin: 28px 0 0; max-width: 56em; }
+.legend dt { margin-bottom: 8px; }
+.legend dd { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.5; }
 
 /* ---------- Mouvement réduit ---------- */
 @media (prefers-reduced-motion: reduce) {
