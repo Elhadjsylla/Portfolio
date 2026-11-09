@@ -108,10 +108,26 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 | Description de Sama Boutik : le point que tu signalais (« cité que Sama Boutik ») | Interprété comme : la description de l'accueil et celle de Sama Boutik ne montraient pas tout. Élargies. Dis-moi si tu visais autre chose. |
 | `og:image` : la photo en portrait (800×1067) te convient pour les aperçus de partage ? | Les aperçus (WhatsApp, LinkedIn) préfèrent du 1200×630, qui sera coupé en paysage. Une vraie image de partage reste à faire. |
 | Textes d'introduction des pages : tu valides la reformulation « Pour un stage, une collaboration ou un site à construire, écris-moi » ? | J'ai remplacé « toujours partant pour un nouveau défi » par une phrase plus directe, sans ajouter de fait. |
+| **Infos reprises de l'ancien CV, à valider (PR `content/apropos-competences`)** : bac série Sciences en Mauritanie (2024) ; entrée à l'ESCOA en décembre 2024, L1 en 2025 ; stage d'informatique à l'APIM (Nouakchott, septembre–octobre 2025) et ses quatre services ; langues et niveaux (français et arabe courants, anglais intermédiaire, wolof, pulaar et soninké en notions). | Tu as confirmé ces faits dans ta consigne, mais ils viennent d'une ancienne version du CV : relis-les. Les sigles NIF et CNSS sont laissés tels quels, sans les développer. |
+| **Stage : durée.** Ta consigne dit « en un mois de stage, j'ai changé quatre fois de service » mais aussi « septembre à octobre ». | Je n'ai écrit aucune durée en mois, seulement « septembre – octobre 2025 ». Dis-moi laquelle est exacte. |
+| **Nom de l'éditeur de code** : le nommer ou pas ? | Le site dit seulement « un éditeur de code ». |
+| **Outils d'IA** : en nommer ou pas ? | Aucun outil ni aucune marque n'est cité (À propos et Compétences). |
+| **Ce que je cherche** : formulation « Je suis ouvert à tout type d'opportunité : un stage, une mission ou une collaboration. Je suis disponible. » | À valider. |
+| **Savoir-être** (Curiosité, Adaptabilité, Travail en équipe, Écoute du client, Fiabilité) : une phrase chacun, tirée du fait associé. | À valider. Aucune autre qualité n'est écrite. |
+| **Hors écran** : sport tous les jours, foot (je le regarde), temps en famille, animés. | Simples étiquettes, sans icône ni détail (aucune icône ajoutée sans ton accord). Les détails demandés plus haut (« Ce que j'aime ») restent utiles. |
+| **« Marketing digital »** : employé seulement dans les blocs « J'apprends en ce moment » (À propos et Compétences), comme demandé. | Exception au ton éditorial, voulue par Elhadj. |
+| **Niveaux** : Supabase est marqué « J'apprends » alors qu'il sert sur Sama Boutik et EcoSurv ; Vite est dans « Outils ». | Appliqué tel que demandé. Dis-moi si tu veux un autre repère. |
+| **Carte `profil` de l'accueil** : elle reste inchangée (elle cite Supabase et les deux projets) ; celle de À propos est plus courte. | Les garder différentes ou les unifier ? |
 
 ---
 
 ## Journal
+
+### 2026-11-09 (À propos et Compétences détaillées)
+- Branche `content/apropos-competences`, créée depuis `feat/contact` : `feat/contact` n'est pas fusionnée dans `dev` (qui contient encore l'ancien site), donc la branche empile les travaux précédents.
+- **À propos** : en-tête (photo carrée cadrée sur le visage, 4 phrases, liens Projets et Contact), parcours daté (bac 2024, ESCOA décembre 2024, stage APIM septembre–octobre 2025, L2 en cours), formation et stage service par service (sans nom de personne, sans chiffre, sans règle interne), « D'où ça vient », deux principes de travail, paragraphe « Travailler avec l'IA » (ancre `#ia`), ce que j'apprends, langues avec niveaux, hors écran, ce que je cherche avec bouton Contact et carte `profil` mise à jour. Les savoir-être n'y sont pas répétés.
+- **Compétences** : groupes Front-end, Back-end et données, Outils, Travailler avec l'IA, Savoir-être, J'apprends en ce moment. Étiquette de niveau par outil (jamais de pourcentage ni de barre). Phrase et liens vers `projets.html#ecosurv` et `#sama-boutik` pour React, Tailwind CSS et Vite. Sama Boutik : le front n'est pas à moi, je n'écris donc que « Sama Boutik repose aussi dessus ». Aucune icône ajoutée (`assets/LICENSES.md` inchangé). Pas de changement de CSP. CV non modifié.
+- Tests : 5 pages × 2 thèmes × 360, 390 et 1440 px sans erreur ni violation CSP, aucun défilement horizontal, contrastes AA, zones tactiles ≥ 44 px, clavier, mouvement réduit. Greps sécurité propres (pas de secret, pas de script ni style inline, aucun numéro, aucune mention de cybersécurité, d'outil d'IA ou d'éditeur).
 
 ### 2026-11-09
 - Refonte lancée : passage de l'ancien portfolio (HTML/CSS, thème orange) à une base plus soignée, en HTML/CSS/JS.
