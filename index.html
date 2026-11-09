@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'none'">
 
   <title>Elhadj Sylla M'Bengue, développeur web à Dakar</title>
-  <meta name="description" content="Portfolio d'Elhadj Sylla M'Bengue, développeur web basé à Dakar. Applications web pour des commerçants et des écoles. Disponible pour des stages et des missions à distance.">
+  <meta name="description" content="Elhadj Sylla M'Bengue, développeur web à Dakar. Des applications pour les commerçants (caisse, stock, dettes clients) et pour les écoles (élèves, paiements, reçus, absences). Disponible pour des stages et des missions.">
   <meta name="author" content="Elhadj Sylla M'Bengue">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
   <meta property="og:title" content="Elhadj Sylla M'Bengue, développeur web">
-  <meta property="og:description" content="Des applications web pensées pour de vrais usages : caisse, stock, paiements scolaires. Basé à Dakar.">
+  <meta property="og:description" content="Applications web pour les commerçants et les écoles : caisse, stock, dettes clients, paiements scolaires. Basé à Dakar.">
   <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/">
   <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
   <meta property="og:image:width" content="800">
@@ -75,20 +75,20 @@
 
     <!-- ============ ACCUEIL ============ -->
     <section class="hero" aria-labelledby="titre-hero">
-      <div class="wrap hero__grid">
+      <div class="wrap hero__grid hero__grid--tall">
 
         <div class="hero__text">
-          <p class="chip hero__in"><span class="chip__dot" aria-hidden="true"></span>Disponible pour des stages et des missions à distance</p>
+          <p class="chip hero__in"><span class="chip__dot" aria-hidden="true"></span>Disponible pour des stages et des missions, à Dakar ou à distance</p>
 
           <h1 id="titre-hero" class="hero__title hero__in">
-            Salut, je suis <span class="accent">Elhadj Sylla</span>
+            <span class="hero__hello">Salut, je suis <span class="accent">Elhadj Sylla</span>, développeur web à Dakar.</span>
+            <span class="hero__statement">Je construis des applications qui remplacent <span class="accent">le cahier et le crayon.</span></span>
           </h1>
-          <p class="hero__role hero__in">Développeur web à Dakar</p>
 
           <p class="hero__lede hero__in">
-            Je construis des applications web pour de vrais usages : tenir une caisse,
-            suivre un stock, gérer les paiements d'une école. Étudiant en Licence 2
-            informatique à l'ESCOA.
+            Pour les commerçants : la caisse, le stock et les dettes des clients, même sans réseau.
+            Pour les écoles : les élèves, les paiements, les reçus et les absences.
+            Étudiant en Licence 2 informatique à l'ESCOA.
           </p>
 
           <p class="hero__actions hero__in">
@@ -103,13 +103,24 @@
           </ul>
         </div>
 
+        <!-- Profil en code : vrai texte sélectionnable, juste après le titre. Toujours sombre. -->
+        <div class="hero__profile">
+          <div class="code" data-reveal data-code>
+            <div class="code__bar">
+              <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="code__tab">profil</span>
+            </div>
+            <pre><code><span class="ln"><span class="k">const</span> <span class="v">profil</span> <span class="p">=</span> <span class="p">{</span></span><span class="ln">  <span class="n">nom</span><span class="p">:</span> <span class="s">"Elhadj Sylla M'Bengue"</span><span class="p">,</span></span><span class="ln">  <span class="n">ville</span><span class="p">:</span> <span class="s">"Dakar, Sénégal"</span><span class="p">,</span></span><span class="ln">  <span class="n">metier</span><span class="p">:</span> <span class="s">"Développeur web"</span><span class="p">,</span></span><span class="ln">  <span class="n">etudes</span><span class="p">:</span> <span class="s">"Licence 2 informatique, ESCOA"</span><span class="p">,</span></span><span class="ln">  <span class="n">stack</span><span class="p">:</span> <span class="p">[</span><span class="s">"HTML"</span><span class="p">,</span> <span class="s">"CSS"</span><span class="p">,</span> <span class="s">"JS"</span><span class="p">,</span> <span class="s">"React"</span><span class="p">]</span><span class="p">,</span></span><span class="ln">  <span class="n">base</span><span class="p">:</span> <span class="s">"Supabase"</span><span class="p">,</span></span><span class="ln">  <span class="n">projets</span><span class="p">:</span> <span class="p">[</span><span class="s">"Sama Boutik"</span><span class="p">,</span> <span class="s">"EcoSurv"</span><span class="p">]</span><span class="p">,</span></span><span class="ln">  <span class="n">objectif</span><span class="p">:</span> <span class="s">"Des outils utiles"</span><span class="p">,</span></span><span class="ln">  <span class="n">dispo</span><span class="p">:</span> <span class="b">true</span><span class="p">,</span></span><span class="ln"><span class="p">};</span></span></code></pre>
+          </div>
+        </div>
+
         <figure class="portrait hero__in hero__in--photo">
           <div class="portrait__ring" aria-hidden="true"></div>
           <div class="portrait__frame">
             <!-- Source unique : images/photo-pro.jpg (déclinée en 480 et 800 px, WebP et JPEG). Voir AGENTS.md. -->
             <picture>
-              <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 920px) 320px, 420px">
-              <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 920px) 320px, 420px"
+              <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 920px) 320px, 460px">
+              <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 920px) 320px, 460px"
                    data-fallback="images/placeholder-portrait.svg"
                    alt="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris" width="800" height="1067" fetchpriority="high">
             </picture>
@@ -141,7 +152,7 @@
             </div>
             <div class="card__body">
               <h3>Sama Boutik</h3>
-              <p>Caisse, stock et dettes clients pour les commerçants, depuis un téléphone.</p>
+              <p>La gestion d'une boutique depuis un téléphone : caisse, stock, dettes clients et paiements Wave et Orange Money, même sans réseau. Pour les commerçants, les grossistes et les distributeurs.</p>
               <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li><li><span class="tag-ico"><img src="assets/icons/tech/supabase.svg" alt="" width="16" height="16"></span>Supabase</li></ul>
               <a class="card__link" href="projets.html#sama-boutik">Voir le projet<span class="sr-only"> Sama Boutik</span></a>
             </div>
@@ -154,7 +165,7 @@
             </div>
             <div class="card__body">
               <h3>EcoSurv</h3>
-              <p>Gestion scolaire et paiements pour les écoles en Mauritanie.</p>
+              <p>La gestion d'une école en Mauritanie : élèves, barèmes en MRU, paiements, reçus PDF numérotés et absences.</p>
               <ul class="tags tags--icons" aria-label="Technologies"><li><span class="tag-ico"><img src="assets/icons/tech/react.svg" alt="" width="16" height="16"></span>React</li><li><span class="tag-ico"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="16" height="16"></span>Tailwind CSS</li><li><span class="tag-ico"><img src="assets/icons/tech/vitejs.svg" alt="" width="16" height="16"></span>Vite</li><li><span class="tag-ico"><img src="assets/icons/tech/supabase.svg" alt="" width="16" height="16"></span>Supabase</li></ul>
               <a class="card__link" href="projets.html#ecosurv">Voir le projet<span class="sr-only"> EcoSurv</span></a>
             </div>

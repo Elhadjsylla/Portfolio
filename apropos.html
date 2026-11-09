@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'none'">
 
   <title>À propos | Elhadj Sylla M'Bengue</title>
-  <meta name="description" content="Étudiant en Licence 2 informatique à l'ESCOA, à Dakar, Elhadj Sylla M'Bengue construit des applications web pour des commerçants et des écoles.">
+  <meta name="description" content="Un premier site codé à la main, puis des applications pour les commerçants et les écoles : le parcours d'Elhadj Sylla M'Bengue, étudiant en Licence 2 informatique à l'ESCOA, à Dakar.">
   <meta name="author" content="Elhadj Sylla M'Bengue">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
   <meta property="og:title" content="À propos d'Elhadj Sylla M'Bengue">
-  <meta property="og:description" content="Étudiant en Licence 2 informatique à l'ESCOA, à Dakar. Je construis des applications pour des commerçants et des écoles.">
+  <meta property="og:description" content="Un premier site codé à la main, puis des applications qui servent vraiment. Étudiant en Licence 2 informatique à l'ESCOA, à Dakar.">
   <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/apropos.html">
   <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
   <meta property="og:image:width" content="800">
@@ -73,48 +73,135 @@
 
   <main id="contenu" tabindex="-1">
 
-    <header class="page-head">
-      <div class="wrap">
-        <h1>À propos</h1>
-        <p>Étudiant en Licence 2 informatique à l'ESCOA, à Dakar.</p>
-      </div>
-    </header>
+    <!-- ============ EN-TÊTE ============ -->
+    <section class="hero" aria-labelledby="titre-hero">
+      <div class="wrap hero__grid hero__grid--single">
 
-    <section class="section" aria-label="Mon parcours">
-      <div class="wrap about about--page">
+        <div class="hero__text">
+          <p class="eyebrow hero__in">À propos</p>
 
-        <figure class="about-photo" data-reveal>
-          <picture>
-              <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 420px) 100vw, 380px">
-              <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 420px) 100vw, 380px"
-                   data-fallback="images/placeholder-portrait.svg"
-                   alt="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris" width="800" height="1067" loading="lazy">
-            </picture>
-        </figure>
+          <h1 id="titre-hero" class="hero__title hero__in">
+            <span class="hero__statement">Un premier site codé à la main, puis des applications <span class="accent">qui servent vraiment.</span></span>
+          </h1>
 
-        <div class="about__text" data-reveal>
-          <p>L'informatique, c'est ce qui me parle depuis toujours.</p>
-          <p>
-            J'ai commencé par un site codé entièrement à la main. Aujourd'hui, je construis
-            des applications pour des commerçants et des écoles : une caisse, un stock,
-            des paiements de scolarité. J'aime quand un outil remplace vraiment le cahier et le crayon.
+          <p class="hero__lede hero__in">
+            Je m'appelle Elhadj Sylla M'Bengue. Je suis étudiant en Licence 2 informatique à l'ESCOA, à Dakar.
+            L'informatique, c'est ce qui me parle depuis toujours.
           </p>
-          <p>Je suis disponible pour des stages et des missions, à Dakar ou à distance.</p>
-          <p><a class="btn" href="contact.html" data-magnetic>Me contacter</a></p>
+
+          <p class="hero__actions hero__in">
+            <a class="btn" href="projets.html" data-magnetic>Voir mes projets</a>
+            <a class="btn btn--ghost" href="contact.html" data-magnetic>Me contacter</a>
+          </p>
         </div>
+
+        <figure class="portrait hero__in hero__in--photo">
+          <div class="portrait__ring" aria-hidden="true"></div>
+          <div class="portrait__frame">
+            <picture>
+              <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 920px) 320px, 460px">
+              <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 920px) 320px, 460px"
+                   data-fallback="images/placeholder-portrait.svg"
+                   alt="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris" width="800" height="1067" fetchpriority="high">
+            </picture>
+          </div>
+          <figcaption class="portrait__badge">
+            <span class="portrait__code" aria-hidden="true">L2</span>
+            <span>Licence 2 informatique, ESCOA</span>
+          </figcaption>
+          <p class="portrait__time"><span class="chip__dot" aria-hidden="true"></span>Dakar, <span id="heure-dakar">--:--</span></p>
+        </figure>
 
       </div>
     </section>
 
-    <section class="section section--tight" aria-label="Mon profil en code">
+    <!-- ============ PARCOURS ============ -->
+    <section class="section" aria-labelledby="titre-parcours">
       <div class="wrap">
-        <!-- Vrai texte (sélectionnable), pas une capture. Toujours sombre, dans les deux thèmes. -->
-        <div class="code" data-reveal data-code>
-          <div class="code__bar">
-            <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="code__tab">profil</span>
-          </div>
-          <pre><code><span class="ln"><span class="k">const</span> <span class="v">profil</span> <span class="p">=</span> <span class="p">{</span></span><span class="ln">  <span class="n">nom</span><span class="p">:</span> <span class="s">"Elhadj Sylla M'Bengue"</span><span class="p">,</span></span><span class="ln">  <span class="n">ville</span><span class="p">:</span> <span class="s">"Dakar, Sénégal"</span><span class="p">,</span></span><span class="ln">  <span class="n">metier</span><span class="p">:</span> <span class="s">"Développeur web"</span><span class="p">,</span></span><span class="ln">  <span class="n">stack</span><span class="p">:</span> <span class="p">[</span><span class="s">"HTML"</span><span class="p">,</span> <span class="s">"CSS"</span><span class="p">,</span> <span class="s">"JS"</span><span class="p">,</span> <span class="s">"React"</span><span class="p">],</span></span><span class="ln">  <span class="n">objectif</span><span class="p">:</span> <span class="s">"Des outils utiles"</span><span class="p">,</span></span><span class="ln">  <span class="n">dispo</span><span class="p">:</span> <span class="b">true</span><span class="p">,</span></span><span class="ln"><span class="p">};</span></span></code></pre>
+        <header class="section__head" data-reveal>
+          <h2 id="titre-parcours">Mon parcours</h2>
+          <p>Du premier site codé à la main aux applications que je construis aujourd'hui.</p>
+        </header>
+
+        <ol class="timeline">
+
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">01</span>
+            <div class="step__body">
+              <h3>Un premier site, codé à la main</h3>
+              <p>Mon tout premier site, Darling Body, je l'ai codé entièrement à la main, en HTML, CSS et JavaScript.</p>
+              <a class="card__link" href="projets.html#darling-body">Voir Darling Body</a>
+            </div>
+          </li>
+
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">02</span>
+            <div class="step__body">
+              <h3>Des applications pour de vrais usages</h3>
+              <p><strong>Sama Boutik</strong>, pour les commerçants : la caisse, le stock et les dettes clients. J'y ai géré la base de données et le back-end.</p>
+              <p><strong>EcoSurv</strong>, pour les écoles : les élèves, les paiements et les reçus. Celui-là, je l'ai réalisé de bout en bout, de l'interface à la mise en ligne.</p>
+              <a class="card__link" href="projets.html">Voir les deux projets</a>
+            </div>
+          </li>
+
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">03</span>
+            <div class="step__body">
+              <h3>Aujourd'hui</h3>
+              <p>Je suis en Licence 2 informatique à l'ESCOA, à Dakar. Je suis disponible pour tout type de stage ou de mission, à Dakar ou à distance.</p>
+              <a class="card__link" href="contact.html">Me contacter</a>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CITATION ============ -->
+    <section class="section section--tight" aria-label="Ce que j'aime">
+      <div class="wrap">
+        <figure class="pullquote" data-reveal>
+          <p class="eyebrow">Ce que j'aime</p>
+          <blockquote>
+            <p>J'aime quand un outil remplace vraiment <span class="accent">le cahier et le crayon.</span></p>
+          </blockquote>
+          <figcaption class="pullquote__sub">C'est ce que je cherche dans chaque projet : un outil utile à celui qui s'en sert.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ OUTILS ============ -->
+    <section class="section" aria-labelledby="titre-outils">
+      <div class="wrap">
+        <header class="section__head" data-reveal>
+          <h2 id="titre-outils">Ce que j'utilise</h2>
+          <p>Les outils de mes projets.</p>
+        </header>
+
+        <ul class="tiles tiles--row" data-reveal>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/react.svg" alt="" width="40" height="40"></span><span>React</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/tailwindcss.svg" alt="" width="40" height="40"></span><span>Tailwind CSS</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/vitejs.svg" alt="" width="40" height="40"></span><span>Vite</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/supabase.svg" alt="" width="40" height="40"></span><span>Supabase</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/html5.svg" alt="" width="40" height="40"></span><span>HTML5</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/css3.svg" alt="" width="40" height="40"></span><span>CSS3</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/javascript.svg" alt="" width="40" height="40"></span><span>JavaScript</span></li>
+          <li class="tile"><span class="plate"><img src="assets/icons/tech/git.svg" alt="" width="40" height="40"></span><span>Git</span></li>
+        </ul>
+
+        <p class="more"><a class="card__link" href="competences.html">Voir toutes les compétences</a></p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section" aria-labelledby="titre-contact">
+      <div class="wrap">
+        <div class="contact" data-reveal data-spot>
+          <h2 id="titre-contact">Un stage, une mission ou un projet ? Écris-moi.</h2>
+          <p>Je te réponds par e-mail.</p>
+          <p class="contact__actions">
+            <a class="btn" href="contact.html" data-magnetic>Me contacter</a>
+          </p>
         </div>
       </div>
     </section>
