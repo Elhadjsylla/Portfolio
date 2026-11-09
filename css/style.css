@@ -449,6 +449,7 @@ main:focus { outline: none; }
 .social--github, .flink--github { --icon: url("../assets/icons/social/github.svg"); }
 .social--linkedin, .flink--linkedin { --icon: url("../assets/icons/social/linkedin.svg"); }
 .social--instagram, .flink--instagram { --icon: url("../assets/icons/social/instagram.svg"); }
+.flink--whatsapp { --icon: url("../assets/icons/social/whatsapp.svg"); }
 .social--facebook, .flink--facebook { --icon: url("../assets/icons/social/facebook.svg"); }
 
 /* portrait (accueil) */
@@ -921,6 +922,7 @@ main:focus { outline: none; }
 .net__text { display: grid; line-height: 1.3; min-width: 0; }
 .net__name { font-weight: 600; }
 .net__hint { color: var(--muted); font-size: .92rem; }
+.net--whatsapp { --icon: url("../assets/icons/social/whatsapp.svg"); }
 .net--github { --icon: url("../assets/icons/social/github.svg"); }
 .net--linkedin { --icon: url("../assets/icons/social/linkedin.svg"); }
 .net--instagram { --icon: url("../assets/icons/social/instagram.svg"); }

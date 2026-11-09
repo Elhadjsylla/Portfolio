@@ -6,7 +6,7 @@ Les textes de licence complets sont dans `assets/licenses/`.
 | Ressource | Source | Licence | Où |
 |-----------|--------|---------|----|
 | Icônes de technologies (HTML5, CSS3, JavaScript, React, Tailwind CSS, Vite, PHP, Python, MySQL, Supabase, Git, GitHub, Linux, LinkedIn) | [Devicon](https://devicon.dev) | MIT | `assets/icons/tech/`, `assets/icons/social/linkedin.svg` |
-| Icônes de réseaux (GitHub, Instagram, Facebook) | [Simple Icons](https://simpleicons.org) | CC0 | `assets/icons/social/` |
+| Icônes de réseaux (GitHub, Instagram, Facebook, WhatsApp) | [Simple Icons](https://simpleicons.org) | CC0 | `assets/icons/social/` |
 | Police Sora | [Fontsource](https://fontsource.org) / Sora Project Authors | SIL OFL 1.1 | `assets/fonts/` |
 | Police DM Sans | Fontsource / Colophon Foundry | SIL OFL 1.1 | `assets/fonts/` |
 | Police JetBrains Mono | Fontsource / JetBrains | SIL OFL 1.1 | `assets/fonts/` |

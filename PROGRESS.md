@@ -60,7 +60,7 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - [ ] **Nettoyer l'ancien site** : `pages/` et la capture Darling Body sont déjà retirés. Restent `images/photo-profil.jpg` et `images/projet-portfolio.jpg`, non utilisés par le nouveau site : à supprimer si tu confirmes.
 - [ ] 1 projet client à ajouter plus tard.
 - [ ] **Formspree : créer le compte et coller l'identifiant** dans `js/config.js` (`FORM_ENDPOINT`). Tant qu'il est vide, le bouton du formulaire ouvre un e-mail pré-rempli au lieu d'envoyer. Étapes détaillées dans la réponse de l'agent du 9 novembre 2026 (compte gratuit, nouveau formulaire vers elhadjsylla667@gmail.com, copier l'URL `https://formspree.io/f/xxxxxxxx`, activer le filtre anti-spam).
-- [ ] **WhatsApp** : veux-tu l'ajouter aux réseaux de la page Contact ? Je ne publie **jamais** ton numéro sans ton accord.
+- [x] **WhatsApp** : accord donné par Elhadj le 9 novembre 2026 pour publier **son numéro WhatsApp** (indicatif Sénégal +221 supposé, car 9 chiffres : **à confirmer**). Lien `wa.me` sur la page Contact et dans « Réseaux » du pied de page. `SECURITY_RULES.md` §2 interdit encore « numéro de téléphone » : à adapter **sur ta demande explicite**.
 - [ ] **GitHub** : activer la protection de branche sur `main` et `dev`, la double authentification, *Secret scanning* et *Push protection* (`GIT_RULES.md` §7).
 - [ ] **Vercel** : connecter le dépôt, puis rattacher le nom de domaine. Mettre à jour les URL `og:` dans `index.html`.
 
@@ -122,6 +122,10 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 ---
 
 ## Journal
+
+### 2026-11-09 (WhatsApp)
+- Branche `feat/whatsapp` (depuis `content/full-stack-linux`). Lien WhatsApp (`https://wa.me/221…` avec un message de départ « Bonjour Elhadj, je vous écris depuis votre portfolio. ») sur la page Contact (premier réseau) et dans la colonne Réseaux du pied de page des 5 pages. Icône officielle Simple Icons (CC0), `assets/LICENSES.md` mis à jour. Aucun autre endroit n'affiche le numéro en clair ; il est seulement dans l'URL du lien. Pas de changement de CSP (un lien n'est pas une requête).
+- Tests : 5 pages × 2 thèmes × 3 tailles sans erreur ; 130 contrôles du formulaire (attente mise à 5 réseaux).
 
 ### 2026-11-09 (full stack, Python, Linux, devise du pied de page)
 - Branche `content/full-stack-linux` (depuis `feat/footer`). **Positionnement changé à la demande d'Elhadj : « développeur full stack » remplace « développeur web »** partout sur le site (titres, descriptions, accroche, carte `profil`, pied de page). `AGENTS.md` dit encore « développeur web » : à mettre à jour **sur ta demande explicite** (je n'y touche pas sans elle). Rappel : sur Sama Boutik, tu as fait la base de données et le back-end ; EcoSurv, tout.
