@@ -396,7 +396,7 @@ main:focus { outline: none; }
   align-items: center;
 }
 /* accueil : le titre, puis juste dessous la carte « profil », alignée sur la même colonne ; la photo occupe les deux lignes */
-.hero__grid--tall { grid-template-areas: "text photo" "profile photo"; align-items: start; }
+.hero__grid--tall { grid-template-areas: "text photo" "profile ."; align-items: start; }
 .hero__text { grid-area: text; min-width: 0; }
 .hero__profile { grid-area: profile; min-width: 0; }
 .hero__grid > .portrait { grid-area: photo; }
@@ -497,12 +497,12 @@ main:focus { outline: none; }
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-/* accueil : la photo garde sa taille d'origine (4:5, 420 px), centrée en hauteur face au titre et à la carte « profil » */
+/* accueil : la photo reste à côté du titre, dans le premier écran, à sa taille d'origine (4:5, 420 px) ; la carte « profil » est dessous */
 .hero__grid--tall > .portrait { align-self: center; }
 
 @media (max-width: 920px) {
   .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "photo"; }
-  .hero__grid--tall { grid-template-areas: "text" "profile" "photo"; }
+  .hero__grid--tall { grid-template-areas: "text" "photo" "profile"; }   /* mobile : la photo avant la carte de code */
   .portrait { justify-self: start; width: min(100%, 320px); margin-top: 8px; }
   .portrait__badge { left: 12px; bottom: -18px; }
   .portrait__time { right: 12px; top: 14px; }
