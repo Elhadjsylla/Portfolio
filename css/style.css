@@ -390,22 +390,26 @@ main:focus { outline: none; }
 .hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
-  gap: clamp(40px, 6vw, 88px);
+  grid-template-areas: "text photo";
+  column-gap: clamp(40px, 6vw, 88px);
+  row-gap: clamp(28px, 4vw, 48px);
   align-items: center;
 }
+/* accueil : le titre, puis juste dessous la carte « profil », alignée sur la même colonne ; la photo occupe toute la hauteur */
+.hero__grid--tall { grid-template-areas: "text photo" "profile photo"; align-items: start; }
+.hero__text { grid-area: text; min-width: 0; }
+.hero__profile { grid-area: profile; min-width: 0; }
+.hero__grid > .portrait { grid-area: photo; }
 
-.hero__title {
-  margin-top: 28px;
-  font: 700 clamp(2.4rem, 5.6vw, 4.5rem)/1.06 var(--display);
-  letter-spacing: -.025em;
-}
+.hero__title { margin-top: 28px; font: 700 1rem/1.1 var(--display); letter-spacing: -.025em; }
+.hero__hello { display: block; font: 600 clamp(1.15rem, 2.2vw, 1.5rem)/1.4 var(--display); letter-spacing: -.01em; }
+.hero__statement { display: block; margin-top: 16px; font: 700 clamp(2.1rem, 4.8vw, 3.8rem)/1.07 var(--display); letter-spacing: -.025em; }
+.hero__title .hero__statement:first-child { margin-top: 0; }
 .accent { color: var(--accent); }
 
-.hero__role {
-  margin-top: 14px;
-  font: 600 clamp(1.25rem, 2.6vw, 1.85rem)/1.3 var(--display);
-  letter-spacing: -.01em;
-}
+.hero__profile .code { max-width: none; }
+.hero__profile .code code { font-size: clamp(.7rem, 2.3vw, .9rem); }
+.hero__profile .code pre { padding: 18px 18px 22px; }
 .hero__lede { margin-top: 24px; max-width: 34em; color: var(--muted); font-size: 1.125rem; }
 .hero__actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 14px; }
 
@@ -493,8 +497,16 @@ main:focus { outline: none; }
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
+/* grand écran : la photo s'étire sur la hauteur du titre et de la carte « profil » */
+@media (min-width: 921px) {
+  .hero__grid--tall > .portrait { align-self: stretch; display: flex; flex-direction: column; width: min(100%, 460px); }
+  .hero__grid--tall > .portrait .portrait__frame { flex: 1; aspect-ratio: auto; min-height: 460px; }
+  .hero__grid--tall > .portrait .portrait__frame picture { position: absolute; inset: 0; display: block; }
+}
+
 @media (max-width: 920px) {
-  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "photo"; }
+  .hero__grid--tall { grid-template-areas: "text" "profile" "photo"; }
   .portrait { justify-self: start; width: min(100%, 320px); margin-top: 8px; }
   .portrait__badge { left: 12px; bottom: -18px; }
   .portrait__time { right: 12px; top: 14px; }
@@ -784,6 +796,7 @@ main:focus { outline: none; }
 .ln:nth-child(1) { --n: 0; } .ln:nth-child(2) { --n: 1; } .ln:nth-child(3) { --n: 2; }
 .ln:nth-child(4) { --n: 3; } .ln:nth-child(5) { --n: 4; } .ln:nth-child(6) { --n: 5; }
 .ln:nth-child(7) { --n: 6; } .ln:nth-child(8) { --n: 7; }
+.ln:nth-child(9) { --n: 8; } .ln:nth-child(10) { --n: 9; } .ln:nth-child(11) { --n: 10; }
 
 @media (max-width: 920px) {
   .about, .about--page { grid-template-columns: minmax(0, 1fr); }
@@ -820,6 +833,44 @@ main:focus { outline: none; }
 }
 .contact__mail a:hover { color: var(--accent); background-size: 0% 3px; }
 .contact__actions { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 14px; }
+
+/* ---------- Page À propos : parcours en étapes, citation ---------- */
+.hero__grid--single .hero__title { margin-top: 18px; }
+.hero__grid--single .eyebrow { margin: 0; }
+
+.timeline { display: grid; margin: 0; padding: 0; list-style: none; }
+.step {
+  position: relative; display: grid; grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: clamp(18px, 3vw, 32px); padding-bottom: clamp(32px, 5vw, 56px);
+}
+.step:last-child { padding-bottom: 0; }
+.step::before {                       /* le fil qui relie les étapes */
+  content: ""; position: absolute; left: 27px; top: 62px; bottom: 6px; width: 2px;
+  background: linear-gradient(var(--border-strong), transparent);
+}
+.step:last-child::before { display: none; }
+.step__num {
+  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  border: 1px solid var(--border-strong); background: var(--surface);
+  color: var(--accent); font: 700 1.05rem/1 var(--display);
+}
+.step__body { display: grid; gap: 10px; padding-top: 6px; justify-items: start; min-width: 0; }
+.step__body h3 { font: 700 clamp(1.3rem, 2.6vw, 1.75rem)/1.2 var(--display); letter-spacing: -.01em; }
+.step__body p { color: var(--muted); max-width: 40em; }
+.step__body strong { color: var(--text); font-weight: 600; }
+.step__body .card__link { margin-top: 0; }
+
+.pullquote {
+  margin: 0; padding: clamp(28px, 6vw, 72px) clamp(22px, 6vw, 72px);
+  border: 1px solid var(--border-strong); border-radius: 32px;
+  background: radial-gradient(700px 320px at 0% 0%, var(--contact-glow), transparent 70%), var(--surface);
+}
+.pullquote .eyebrow { margin: 0 0 18px; }
+.pullquote blockquote { margin: 0; }
+.pullquote blockquote p { max-width: 20em; font: 700 clamp(1.6rem, 4.2vw, 3rem)/1.15 var(--display); letter-spacing: -.02em; }
+.pullquote__sub { margin-top: 22px; max-width: 34em; color: var(--muted); font-size: 1.15rem; }
+
+.page-head__chips { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* ---------- Page Contact : formulaire, coordonnées, réseaux ---------- */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 24px; align-items: start; }
