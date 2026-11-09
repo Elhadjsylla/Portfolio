@@ -19,8 +19,11 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 | Carte de code | Gardée depuis l'ancien site, onglet nommé `profil`, contenu en JavaScript, texte réel. |
 | Polices / icônes | Auto-hébergées (`assets/`). Sora, DM Sans, JetBrains Mono. Icônes officielles Devicon et Simple Icons. |
 | Sécurité | CSP stricte (meta + `vercel.json`), pas de script ni de style inline, pas de CDN. Voir `SECURITY_RULES.md`. |
-| Projets | Écrits à la main dans `index.html` (pas de rendu par JS). Modèle de carte en commentaire. |
-| Anciens projets | Darling Body retiré. |
+| Projets | Écrits à la main dans le HTML (pas de rendu par JS) : cartes compactes sur `index.html`, blocs détaillés sur `projets.html` (ancres `#sama-boutik`, `#ecosurv`, `#darling-body`). |
+| Projets publiés | Sama Boutik, EcoSurv, puis Darling Body présenté comme « mon premier site ». **Maison Fade est retiré** (cartes, textes, tags, liens, balises). |
+| EcoSurv, publication | Accord de l'associé déclaré par Elhadj le 9 novembre 2026, preuve conservée hors du dépôt. Aucun nom de partenaire n'est écrit sur le site. |
+| Chiffres | Aucun chiffre sur aucun projet (élèves, écoles, utilisateurs, boutiques…). |
+| Captures | Pages publiques uniquement, jamais d'écran connecté ni de donnée réelle. `images/projets/<slug>-bureau` et `<slug>-mobile`, en `.webp` avec repli `.jpg`. |
 | Contenu | Aucun faux témoignage, aucun faux chiffre, aucune barre de niveau inventée. |
 
 ---
@@ -44,18 +47,18 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 
 ## En cours
 
-- [ ] Branche `feat/structure-multipage` : PR ouverte, en attente de validation d'Elhadj.
+- [ ] Branche `content/projets` (créée en local à partir de `feat/structure-multipage`, car `dev` contient encore l'ancien site) : page Projets détaillée faite, en attente de validation d'Elhadj et des réponses listées dans « À CONFIRMER ».
 
 ---
 
 ## À faire par Elhadj
 
 - [ ] **Photo professionnelle** : j'ai utilisé la photo envoyée dans la conversation (810×1080, sans EXIF). **À valider.** Si tu en as une plus grande (idéalement 1200 px de large ou plus), remplace `images/photo-pro.jpg` et je régénère les versions, y compris 1200 px.
-- [ ] **Captures de projets** : `images/projet-sama-boutik.jpg`, `images/projet-maison-fade.jpg` (16:10, ~800×500). Vérifier qu'elles ne montrent **aucune vraie donnée** de client.
+- [ ] **Anciennes images de projets, non utilisées** : `images/projet-sama-boutik.jpg` (capture périmée, remplacée par `images/projets/`) et `images/projet-maison-fade.jpg` (projet retiré). Je ne les ai pas supprimées : dis-moi si je peux.
+- [ ] **Captures de projets** : vérifier d'un coup d'œil que `images/projets/*` ne montrent aucune donnée réelle. Sama Boutik affiche des exemples de démonstration sur sa page (« +15 000 FCFA », « Stock faible ») : je les crois fictifs, à confirmer.
 - [ ] **CV** : le bouton du pied de page télécharge `cv/CV_Elhadj_Sylla.pdf`, qui est **encore l'ancien fichier**. Le mettre à jour (retirer la cybersécurité, vérifier téléphone et adresse, métadonnées du PDF).
 - [ ] **Nettoyer l'ancien site** : `pages/` et la capture Darling Body sont déjà retirés. Restent `images/photo-profil.jpg` et `images/projet-portfolio.jpg`, non utilisés par le nouveau site : à supprimer si tu confirmes.
-- [ ] **Liste des nouveaux projets** à ajouter, avec pour chacun : nom, description en 1–2 phrases, technologies, lien en ligne, capture.
-- [ ] **EcoSurv** : obtenir l'accord écrit de Babacar SY avant publication (`SECURITY_RULES.md` §3).
+- [ ] 1 projet client à ajouter plus tard.
 - [ ] **GitHub** : activer la protection de branche sur `main` et `dev`, la double authentification, *Secret scanning* et *Push protection* (`GIT_RULES.md` §7).
 - [ ] **Vercel** : connecter le dépôt, puis rattacher le nom de domaine. Mettre à jour les URL `og:` dans `index.html`.
 
@@ -70,16 +73,34 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 
 ---
 
+## Confirmé par Elhadj
+
+- [x] Le lien Facebook (`collet00patrick`) est bien le sien : affiché dans le pied de page de chaque page et sur la page Contact.
+- [x] « Licence 2 informatique à l'ESCOA » est exact.
+- [x] Ville : Dakar.
+- [x] Sama Boutik : technologies React, Tailwind CSS et Vite (aucun tag PHP ni Supabase) ; rôle : conception de l'interface, développement, mise en ligne et référencement.
+- [x] EcoSurv : mêmes technologies ; fonctions confirmées : inscription des élèves, barèmes en MRU, encaissements en espèces et par mobile money, reçus PDF numérotés, suivi des absences.
+- [x] Darling Body revient sur la page Projets, présenté comme son premier site.
+
+## Procédure pour ajouter un projet
+
+1. Captures des **pages publiques** (bureau 1440×900, mobile 390×844), jamais d'écran connecté ni de donnée réelle. Playwright installé **hors du dépôt**.
+2. Sortie : `images/projets/<slug>-bureau.webp`, `<slug>-mobile.webp` et leurs repli `.jpg`, moins de 200 Ko chacune.
+3. Copier un bloc `<article class="project">` de `projets.html` (alterner `project--flip`) et une carte de `index.html`.
+4. Aucun nom de partenaire, aucun chiffre. Voir `SECURITY_RULES.md` §3.
+
+---
+
 ## À CONFIRMER (ne pas inventer)
 
 | Question | Pourquoi |
 |----------|----------|
-| Maison Fade : « Démo en ligne » ou « En cours » ? | L'ancien site disait « En cours ». C'était aussi un projet scolaire noté. |
-| Le lien Facebook (`collet00patrick`) est-il bien le tien ? | Repris tel quel de l'ancien site. |
-| « Licence 2 informatique à l'ESCOA » toujours exact ? | Repris de l'ancien site. |
-| Quels projets remplacent « l'ancien » : lesquels exactement ? | Seuls Sama Boutik et Maison Fade ont un lien connu. |
 | Mentionner Sunu Classe, OGF, ou les sites d'immersion (Rassoul Tijara, MD__shoot, The Store…) ? | Aucun lien en ligne connu pour le moment. |
-| Le lien Facebook doit-il apparaître dans le pied de page ? | Je l'ai laissé seulement sur la page Contact, tant que le lien n'est pas confirmé. |
+| **« Le problème » de Sama Boutik et d'EcoSurv** : pourquoi as-tu créé chaque projet ? | Les deux paragraphes actuels viennent du « constat » des pages publiques des sites (cahier, stock compté à la main, reçus sur papier). À remplacer par tes mots. |
+| **Rôle sur EcoSurv** : « J'ai conçu l'interface, développé la plateforme et l'ai mise en ligne. » | Formulation proposée par moi, non confirmée. |
+| **Fonctionnalités d'EcoSurv** : garder seulement les 5 lignes que tu as confirmées ? | Visibles sur le site mais **non reprises**, faute d'accord : chèque, noms des opérateurs (Bankily, Masrvi, Sedad), validation par le directeur, clôture de caisse, quatre accès (directeur, caissier, enseignant, parent), notifications, utilisable sur téléphone et ordinateur. Aucun tarif repris. |
+| **Sama Boutik, écarts avec ta description** | Le site public s'adresse aussi aux grossistes et distributeurs (boutiques clientes à crédit, tournées de vendeurs, rapprochement de caisse). Il annonce aussi : fonctionnement hors ligne, paiement Wave et Orange Money, un accès par employé, alerte de retard de paiement. **Rien de cela n'est écrit** sur le site tant que tu ne l'as pas confirmé. |
+| Darling Body : le lien `https://darlingbody.com` et la phrase « Mon tout premier site, codé entièrement à la main, en HTML, CSS et JavaScript » sont-ils toujours justes ? | Repris de l'ancien site. Le site répond (HTTP 200). |
 | `og:image` : la photo en portrait (800×1067) te convient pour les aperçus de partage ? | Les aperçus (WhatsApp, LinkedIn) préfèrent du 1200×630, qui sera coupé en paysage. Une vraie image de partage reste à faire. |
 | Textes d'introduction des pages : tu valides la reformulation « Pour un stage, une collaboration ou un site à construire, écris-moi » ? | J'ai remplacé « toujours partant pour un nouveau défi » par une phrase plus directe, sans ajouter de fait. |
 
@@ -100,3 +121,13 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Choix technique : les logos de technologies sont posés sur une pastille bleu nuit plutôt que dupliqués en variantes claires/sombres. Un seul fichier par logo, lisible sur les deux fonds.
 - Photo : source 810 px de large, donc versions 480 et 800 px seulement (pas d'agrandissement vers 1200).
 - Tests faits en navigateur (Chrome headless) : 5 pages × 2 thèmes × 360, 390 et 1440 px, aucune erreur de console ni violation de CSP, aucun défilement horizontal, contrastes mesurés ≥ AA, clavier, menu mobile, mouvement réduit. Non testé : Safari iPhone, Firefox.
+
+### 2026-11-09 (page Projets)
+- Branche `content/projets`. Maison Fade retiré partout (cartes, tags, lien, balises `og:`/description, et les phrases qui y faisaient allusion : « l'agenda d'un salon »). **Le fichier `images/projet-maison-fade.jpg` n'est pas supprimé** : à ton accord.
+- Page Projets : un bloc détaillé par projet (Sama Boutik, puis EcoSurv, alternés), puis Darling Body en « mon premier site ». Cadre navigateur (trois points) et cadre téléphone, en clair et en sombre.
+- Accueil : « Projets à la une » (2 cartes compactes avec vraies captures, liens vers les ancres). La grille accepte une 3e carte sans refonte.
+- Captures : pages publiques, avec le mouvement réduit demandé au navigateur et le bandeau cookies refusé (navigateur jetable) pour une image propre. Aucune connexion, aucune saisie, aucun compte créé.
+- Darling Body : capture retrouvée dans l'historique Git (ancien site), réoptimisée.
+- Pied de page de chaque page : GitHub, LinkedIn, Instagram **et Facebook**.
+- Zones tactiles : tous les liens et boutons font au moins 44 px (mesuré en navigateur).
+- Textes : seuls les faits confirmés sont écrits. Les passages à valider sont dans « À CONFIRMER ». Pas de changement de CSP.
