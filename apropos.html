@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'none'">
 
   <title>À propos | Elhadj Sylla M'Bengue</title>
-  <meta name="description" content="Un premier site codé à la main, puis des applications pour les commerçants et les écoles : le parcours d'Elhadj Sylla M'Bengue, étudiant en Licence 2 informatique à l'ESCOA, à Dakar.">
+  <meta name="description" content="Le parcours d'Elhadj Sylla M'Bengue : bac en Mauritanie, ESCOA à Dakar, stage à l'APIM, premiers projets en ligne. Ouvert à tout type de stage ou de mission.">
   <meta name="author" content="Elhadj Sylla M'Bengue">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#06142A" media="(prefers-color-scheme: dark)">
@@ -19,7 +19,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="Elhadj Sylla M'Bengue">
   <meta property="og:title" content="À propos d'Elhadj Sylla M'Bengue">
-  <meta property="og:description" content="Un premier site codé à la main, puis des applications qui servent vraiment. Étudiant en Licence 2 informatique à l'ESCOA, à Dakar.">
+  <meta property="og:description" content="Un premier site codé à la main, puis des applications qui servent vraiment. Licence 2 informatique à l'ESCOA, à Dakar.">
   <meta property="og:url" content="https://elhadjsylla.github.io/Portfolio/apropos.html">
   <meta property="og:image" content="https://elhadjsylla.github.io/Portfolio/images/photo-pro-800.jpg">
   <meta property="og:image:width" content="800">
@@ -73,82 +73,211 @@
 
   <main id="contenu" tabindex="-1">
 
-    <!-- ============ EN-TÊTE ============ -->
+    <!-- ============ EN-TÊTE : photo et introduction ============ -->
     <header class="page-head page-head--big">
-      <div class="wrap">
-        <p class="eyebrow">À propos</p>
-        <h1>Un premier site codé à la main, puis des applications qui servent vraiment.</h1>
-        <p>Je m'appelle Elhadj Sylla M'Bengue. Je suis étudiant en Licence 2 informatique à l'ESCOA, à Dakar. L'informatique, c'est ce qui me parle depuis toujours.</p>
-        <ul class="page-head__chips" aria-label="En bref">
-          <li class="chip">Licence 2 informatique, ESCOA</li>
-          <li class="chip">Dakar</li>
-          <li class="chip"><span class="chip__dot" aria-hidden="true"></span>Disponible pour des stages et des missions</li>
-        </ul>
+      <div class="wrap about-head">
+
+        <figure class="about-head__photo">
+          <picture>
+            <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 760px) 170px, 260px">
+            <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 760px) 170px, 260px"
+                 data-fallback="images/placeholder-portrait.svg"
+                 alt="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris" width="800" height="1067" fetchpriority="high">
+          </picture>
+        </figure>
+
+        <div class="about-head__text">
+          <p class="eyebrow">À propos</p>
+          <h1>Un premier site codé à la main, puis des applications qui servent vraiment.</h1>
+          <p>Je m'appelle Elhadj Sylla M'Bengue, je suis en Licence 2 informatique à l'ESCOA, à Dakar. En 2025, j'ai fait un stage d'informatique à l'APIM, à Nouakchott. Mon premier site, Darling Body, je l'ai codé à la main ; depuis, j'ai travaillé sur Sama Boutik et EcoSurv. Je suis ouvert à tout type de stage ou de mission.</p>
+          <p class="page-head__links">
+            <a class="pill" href="projets.html">Voir mes projets</a>
+            <a class="pill" href="contact.html">Me contacter</a>
+          </p>
+        </div>
+
       </div>
     </header>
 
-    <!-- ============ PHOTO ET PARCOURS ============ -->
+    <!-- ============ MON PARCOURS ============ -->
     <section class="section" aria-labelledby="titre-parcours">
-      <div class="wrap about about--page">
-
-        <figure class="about-photo" data-reveal>
-          <picture>
-              <source type="image/webp" srcset="images/photo-pro-480.webp 480w, images/photo-pro-800.webp 800w" sizes="(max-width: 420px) 100vw, 380px">
-              <img src="images/photo-pro-800.jpg" srcset="images/photo-pro-480.jpg 480w, images/photo-pro-800.jpg 800w" sizes="(max-width: 420px) 100vw, 380px"
-                   data-fallback="images/placeholder-portrait.svg"
-                   alt="Portrait d'Elhadj Sylla M'Bengue, en tee-shirt noir, sur fond gris" width="800" height="1067" loading="lazy">
-            </picture>
-        </figure>
-
-        <div class="about__text">
+      <div class="wrap">
+        <div class="section__head">
           <h2 id="titre-parcours">Mon parcours</h2>
+        </div>
 
-          <ol class="timeline">
+        <ol class="timeline">
 
-            <li class="step" data-reveal>
-              <span class="step__num" aria-hidden="true">01</span>
-              <div class="step__body">
-                <h3>Un premier site, codé à la main</h3>
-                <p>Mon tout premier site, Darling Body, je l'ai codé entièrement à la main, en HTML, CSS et JavaScript.</p>
-                <a class="card__link" href="projets.html#darling-body">Voir Darling Body</a>
-              </div>
-            </li>
+          <li class="step" data-reveal>
+            <span class="step__num step__num--dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <p class="step__date">2024</p>
+              <h3>Baccalauréat série Sciences</h3>
+              <p>Je l'ai passé en Mauritanie.</p>
+            </div>
+          </li>
 
-            <li class="step" data-reveal>
-              <span class="step__num" aria-hidden="true">02</span>
-              <div class="step__body">
-                <h3>Des applications pour de vrais usages</h3>
-                <p><strong>Sama Boutik</strong>, pour les commerçants : la caisse, le stock et les dettes clients. J'y ai géré la base de données et le back-end.</p>
-                <p><strong>EcoSurv</strong>, pour les écoles : les élèves, les paiements et les reçus. Celui-là, je l'ai réalisé de bout en bout, de l'interface à la mise en ligne.</p>
-                <a class="card__link" href="projets.html">Voir les deux projets</a>
-              </div>
-            </li>
+          <li class="step" data-reveal>
+            <span class="step__num step__num--dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <p class="step__date">Décembre 2024</p>
+              <h3>Entrée à l'ESCOA, à Dakar</h3>
+              <p>J'ai rejoint l'école en décembre 2024. La première année de licence a eu lieu en 2025.</p>
+            </div>
+          </li>
 
-            <li class="step" data-reveal>
-              <span class="step__num" aria-hidden="true">03</span>
-              <div class="step__body">
-                <h3>Aujourd'hui</h3>
-                <p>Je suis en Licence 2 informatique à l'ESCOA, à Dakar. Je suis disponible pour tout type de stage ou de mission, à Dakar ou à distance.</p>
-                <a class="card__link" href="contact.html">Me contacter</a>
-              </div>
-            </li>
+          <li class="step" data-reveal>
+            <span class="step__num step__num--dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <p class="step__date">Septembre – octobre 2025</p>
+              <h3>Stage d'informatique à l'APIM, à Nouakchott</h3>
+              <p>Stagiaire à l'Agence de Promotion des Investissements en Mauritanie, dans quatre services (détail plus bas).</p>
+            </div>
+          </li>
 
-          </ol>
+          <li class="step" data-reveal>
+            <span class="step__num step__num--dot" aria-hidden="true"></span>
+            <div class="step__body">
+              <p class="step__date">En cours</p>
+              <h3>Licence 2 informatique, à l'ESCOA</h3>
+              <p>Je poursuis mes études à Dakar.</p>
+              <a class="card__link" href="projets.html">Voir les projets</a>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FORMATION ET STAGE ============ -->
+    <section class="section section--tight" aria-labelledby="titre-stage">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="titre-stage">Formation et stage</h2>
+          <p>Je suis en Licence 2 informatique à l'ESCOA, à Dakar. En septembre et octobre 2025, j'ai fait un stage d'informatique à l'Agence de Promotion des Investissements en Mauritanie (APIM), à Nouakchott. J'y suis passé par quatre services.</p>
+        </div>
+
+        <ul class="facts">
+          <li class="fact" data-reveal>
+            <h3>Guichet unique</h3>
+            <p>Accueil des porteurs de projet, accompagnement dans les démarches de création d'entreprise, saisie et suivi des dossiers.</p>
+          </li>
+          <li class="fact" data-reveal>
+            <h3>Tribunal de commerce</h3>
+            <p>Établissement des chronologies, des registres de commerce, du NIF et des immatriculations CNSS.</p>
+          </li>
+          <li class="fact" data-reveal>
+            <h3>Direction de l'analyse et du suivi de l'investissement</h3>
+            <p>Instruction des dossiers d'agrément et suivi de l'avancement des projets d'investissement.</p>
+          </li>
+          <li class="fact" data-reveal>
+            <h3>Secteur privé</h3>
+            <p>Administration des bases de données d'entreprises : saisie, contrôle de cohérence, requêtes et extractions.</p>
+          </li>
+        </ul>
+
+        <p class="takeaway" data-reveal>
+          <strong>Ce que j'en retiens.</strong> J'ai appris comment se crée une entreprise, quels dossiers il faut fournir et comment les saisir sur ordinateur. J'y ai aussi découvert le monde professionnel.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ D'OÙ ÇA VIENT ============ -->
+    <section class="section section--tight" aria-labelledby="titre-origine">
+      <div class="wrap prose" data-reveal>
+        <h2 id="titre-origine">D'où ça vient</h2>
+        <p>Je n'ai pas choisi l'informatique : c'est tombé sur moi comme ça. Depuis tout petit, c'est ce qui me passionne. Je suis curieux, et je suis toujours à la recherche du savoir. Je n'ai pas de date ni de scène précise à raconter : c'est venu naturellement, et ça ne m'a plus quitté.</p>
+      </div>
+    </section>
+
+    <!-- ============ MA FAÇON DE TRAVAILLER ============ -->
+    <section class="section section--tight" aria-labelledby="titre-travail">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 id="titre-travail">Ma façon de travailler</h2>
+        </div>
+
+        <div class="principles">
+          <article class="principle" data-reveal>
+            <p class="principle__num" aria-hidden="true">1</p>
+            <h3>Je commence ce que je peux finir</h3>
+            <p>Avant d'accepter un projet, je vérifie que je suis capable d'aller jusqu'au bout. Tant que ce n'est pas le cas, je ne démarre pas.</p>
+          </article>
+          <article class="principle" data-reveal>
+            <p class="principle__num" aria-hidden="true">2</p>
+            <h3>Le client parle d'abord</h3>
+            <p>Je laisse le client exprimer librement son besoin, avec ses mots. Ensuite seulement, je le transforme en solution.</p>
+          </article>
+        </div>
+
+        <div class="ia" id="ia" data-reveal>
+          <h3>Travailler avec l'IA</h3>
+          <p>Je ne me contente pas de lui donner une consigne : je cadre la tâche et je fixe des règles par écrit (sécurité, Git, ton éditorial). L'agent avance par petites étapes, sur une branche à part. Je relis ses changements, je les teste, et je corrige quand il se trompe ou invente. La décision de fusionner, c'est moi qui la prends.</p>
+          <p>Ce portfolio a été construit ainsi : des règles écrites dans le dépôt, et ma validation avant chaque fusion.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CE QUE J'APPRENDS ============ -->
+    <section class="section section--tight" aria-labelledby="titre-apprends">
+      <div class="wrap prose" data-reveal>
+        <h2 id="titre-apprends">Ce que j'apprends en ce moment</h2>
+        <ul class="chips" aria-label="En cours d'apprentissage">
+          <li class="chip">UI/UX</li>
+          <li class="chip">Marketing digital</li>
+        </ul>
+        <p>Mon idée : un bon produit que personne ne sait vendre ne sert à rien.</p>
+      </div>
+    </section>
+
+    <!-- ============ LANGUES ET HORS ÉCRAN ============ -->
+    <section class="section section--tight" aria-labelledby="titre-langues">
+      <div class="wrap duo">
+
+        <div data-reveal>
+          <h2 id="titre-langues" class="h2-sm">Langues</h2>
+          <ul class="langs">
+            <li><span class="langs__name">Français</span><span class="level">Courant</span></li>
+            <li><span class="langs__name">Arabe</span><span class="level">Courant</span></li>
+            <li><span class="langs__name">Anglais</span><span class="level">Intermédiaire</span></li>
+            <li><span class="langs__name">Wolof</span><span class="level">Notions</span></li>
+            <li><span class="langs__name">Pulaar</span><span class="level">Notions</span></li>
+            <li><span class="langs__name">Soninké</span><span class="level">Notions</span></li>
+          </ul>
+        </div>
+
+        <div data-reveal>
+          <h2 class="h2-sm">Hors écran</h2>
+          <ul class="chips chips--col">
+            <li class="chip">Du sport tous les jours</li>
+            <li class="chip">Le foot, que je regarde</li>
+            <li class="chip">Du temps en famille</li>
+            <li class="chip">Les animés</li>
+          </ul>
         </div>
 
       </div>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section class="section" aria-labelledby="titre-contact">
-      <div class="wrap">
-        <div class="contact" data-reveal data-spot>
-          <h2 id="titre-contact">Un stage, une mission ou un projet ? Écris-moi.</h2>
-          <p>Disponible à Dakar ou à distance.</p>
-          <p class="contact__actions">
-            <a class="btn" href="contact.html" data-magnetic>Me contacter</a>
-          </p>
+    <!-- ============ CE QUE JE CHERCHE ============ -->
+    <section class="section" aria-labelledby="titre-cherche">
+      <div class="wrap seek">
+
+        <div class="seek__text" data-reveal>
+          <h2 id="titre-cherche">Ce que je cherche</h2>
+          <p>Je suis ouvert à tout type d'opportunité : un stage, une mission ou une collaboration. Je suis disponible.</p>
+          <p><a class="btn" href="contact.html" data-magnetic>Me contacter</a></p>
         </div>
+
+        <!-- Carte de code « profil » : vrai texte sélectionnable, toujours sombre. -->
+        <div class="code" data-reveal data-code>
+          <div class="code__bar">
+            <span class="code__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="code__tab">profil</span>
+          </div>
+          <pre><code><span class="ln"><span class="k">const</span> <span class="v">profil</span> <span class="p">=</span> <span class="p">{</span></span><span class="ln">  <span class="n">nom</span><span class="p">:</span> <span class="s">"Elhadj Sylla M'Bengue"</span><span class="p">,</span></span><span class="ln">  <span class="n">ville</span><span class="p">:</span> <span class="s">"Dakar, Sénégal"</span><span class="p">,</span></span><span class="ln">  <span class="n">metier</span><span class="p">:</span> <span class="s">"Développeur web"</span><span class="p">,</span></span><span class="ln">  <span class="n">etudes</span><span class="p">:</span> <span class="s">"Licence 2 informatique, ESCOA"</span><span class="p">,</span></span><span class="ln">  <span class="n">stack</span><span class="p">:</span> <span class="p">[</span><span class="s">"HTML"</span><span class="p">,</span> <span class="s">"CSS"</span><span class="p">,</span> <span class="s">"JS"</span><span class="p">,</span> <span class="s">"React"</span><span class="p">]</span><span class="p">,</span></span><span class="ln">  <span class="n">dispo</span><span class="p">:</span> <span class="b">true</span><span class="p">,</span></span><span class="ln"><span class="p">};</span></span></code></pre>
+        </div>
+
       </div>
     </section>
 
