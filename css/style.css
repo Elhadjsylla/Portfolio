@@ -512,6 +512,20 @@ main:focus { outline: none; }
 .page-head p { margin-top: 16px; max-width: 36em; color: var(--muted); font-size: 1.15rem; }
 .page-head + .section { padding-top: clamp(16px, 3vw, 32px); }
 
+/* en-tête de page détaillé (page Projets) : petit titre, grand titre, introduction, raccourcis */
+.page-head--big { padding-bottom: clamp(40px, 7vw, 88px); }
+.page-head--big .eyebrow { margin: 0 0 18px; color: var(--accent); font: 600 .85rem/1.3 var(--display); letter-spacing: .08em; max-width: none; }
+.page-head--big h1 { max-width: 15em; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.05; }
+.page-head--big p:not(.eyebrow) { margin-top: 22px; max-width: 38em; }
+.page-head__links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+.pill {
+  display: inline-flex; align-items: center; min-height: 44px; padding-inline: 20px;
+  border: 1px solid var(--border-strong); border-radius: 999px; background: var(--surface);
+  color: var(--text); font-weight: 600; text-decoration: none;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.pill:hover { border-color: var(--accent); background: var(--surface-2); transform: translateY(-2px); }
+
 .more { margin-top: clamp(24px, 4vw, 40px); }
 
 /* apparition au défilement */
