@@ -34,6 +34,7 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - [x] Menu mobile accessible (bouton, Échap, fermeture au clic)
 - [x] Mouvement réduit respecté (sans animation, le site reste complet)
 - [x] Images de remplacement si une photo ou une capture manque
+- [x] Script de développement local : `npm run dev` (serveur statique sur http://localhost:5500, aucune dépendance installée)
 - [x] Testé : ordinateur (1440 px) et mobile (360, 390, 430 px), aucun défilement horizontal, aucune erreur de console, aucune violation de CSP
 
 ## En cours
@@ -83,3 +84,8 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Rédaction des règles et des instructions d'agent avant tout code.
 - Construction de la base (voir « Fait »). Correction en cours de route : le halo tournant de la photo élargissait la page sur mobile (corrigé avec `overflow-x: clip` sur le hero) ; le panneau du menu mobile est maintenant opaque.
 - Une première version « cahier d'écolier » avait été proposée plus tôt dans la session. Elle n'a pas été retenue, la référence bleu nuit d'Elhadj prime.
+
+### 2026-11-09 (suite)
+- Ancien site remplacé par le nouveau (PR #1, fusionnée dans `main`). `dev` n'a pas été alignée sur `main` : à décider par Elhadj.
+- Ajout de `package.json` (script `dev` : `npx --yes serve@14 . -l 5500`, sans dependencies). Branche `chore/script-dev` créée depuis `main`, faute de `dev` à jour.
+- Testé : `npm run dev` démarre, `/`, CSS, JS et favicon répondent 200. Console du navigateur non vérifiée par l'agent.
