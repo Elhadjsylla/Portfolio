@@ -263,11 +263,6 @@ main:focus { outline: none; }
 .btn--ghost { background: transparent; border-color: var(--border-strong); color: var(--text); }
 .btn--ghost:hover { background: var(--ghost-hover-bg); border-color: var(--accent); box-shadow: none; }
 .btn--small { padding: .6em 1.15em; font-size: .92rem; }
-.btn--cv::before {
-  content: ""; width: 1.25em; height: 1.25em; background: currentColor;
-  -webkit-mask: url("../assets/icons/ui/download.svg") center / contain no-repeat;
-          mask: url("../assets/icons/ui/download.svg") center / contain no-repeat;
-}
 
 /* ---------- En-tête ---------- */
 /* capsule flottante : logo, liens, bouton de thème */
@@ -444,6 +439,7 @@ main:focus { outline: none; }
 .social--linkedin, .flink--linkedin { --icon: url("../assets/icons/social/linkedin.svg"); }
 .social--instagram, .flink--instagram { --icon: url("../assets/icons/social/instagram.svg"); }
 .social--facebook, .flink--facebook { --icon: url("../assets/icons/social/facebook.svg"); }
+.flink--cv { --icon: url("../assets/icons/ui/download.svg"); }
 
 /* portrait (accueil) */
 .portrait { position: relative; justify-self: center; width: min(100%, 420px); }
@@ -836,7 +832,6 @@ main:focus { outline: none; }
 .footer__list a.flink:hover { color: var(--accent); }
 .footer__mail { overflow-wrap: anywhere; }
 
-.footer__cv { margin-top: 16px; }   /* bouton CV : dans la colonne Contact */
 .footer__legal {
   margin-top: clamp(32px, 5vw, 48px); padding-top: 24px;
   border-top: 1px solid var(--border); text-align: center; font-size: .92rem;
