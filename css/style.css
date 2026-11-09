@@ -43,7 +43,7 @@
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --ease: cubic-bezier(.2, .8, .2, 1);
-  --header-h: 68px;
+  --header-h: 88px;                /* capsule : 12 px de marge + 64 px + air */
 
   --on-blue: #fff;                 /* texte sur fond bleu (contraste AA) */
   --blue: #2F6FE0;                 /* fond des boutons */
@@ -92,7 +92,8 @@
   --ok-glow: rgba(52, 211, 153, .5);
   --ok-glow-0: rgba(52, 211, 153, 0);
 
-  --header-bg: rgba(6, 20, 42, .82);
+  --header-bg: rgba(11, 29, 58, .78);
+  --shadow-header: rgba(0, 0, 0, .35);
   --chip-bg: rgba(12, 33, 64, .7);
   --float-bg: rgba(8, 26, 52, .88);
   --badge-bg: rgba(6, 20, 42, .85);
@@ -138,7 +139,8 @@
   --ok-glow: rgba(15, 159, 110, .4);
   --ok-glow-0: rgba(15, 159, 110, 0);
 
-  --header-bg: rgba(243, 247, 254, .88);
+  --header-bg: rgba(255, 255, 255, .84);
+  --shadow-header: rgba(10, 27, 56, .12);
   --chip-bg: rgba(255, 255, 255, .85);
   --float-bg: rgba(255, 255, 255, .92);
   --badge-bg: rgba(255, 255, 255, .92);
@@ -261,7 +263,6 @@ main:focus { outline: none; }
 .btn--ghost { background: transparent; border-color: var(--border-strong); color: var(--text); }
 .btn--ghost:hover { background: var(--ghost-hover-bg); border-color: var(--accent); box-shadow: none; }
 .btn--small { padding: .6em 1.15em; font-size: .92rem; }
-.btn--big { padding: 1.05em 2.2em; font-size: 1.1rem; }
 .btn--cv::before {
   content: ""; width: 1.25em; height: 1.25em; background: currentColor;
   -webkit-mask: url("../assets/icons/ui/download.svg") center / contain no-repeat;
@@ -269,20 +270,24 @@ main:focus { outline: none; }
 }
 
 /* ---------- En-tête ---------- */
+/* capsule flottante : logo, liens, bouton de thème */
 .header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  transition: background-color .3s ease, border-color .3s ease, backdrop-filter .3s ease;
-  border-bottom: 1px solid transparent;
-}
-.header.is-scrolled {
-  background: var(--header-bg);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  border-bottom-color: var(--border);
+  position: fixed; top: 12px; left: 0; right: 0; z-index: 100;
+  padding-inline: clamp(12px, 3vw, 24px);
+  pointer-events: none;            /* seules la capsule et son menu captent les clics */
 }
 .header__in {
-  height: var(--header-h);
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  pointer-events: auto; position: relative;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-inline: 10px;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px var(--shadow-header);
+  transition: border-color .3s ease, box-shadow .3s ease;
 }
+.header.is-scrolled .header__in { border-color: var(--border-strong); box-shadow: 0 14px 40px var(--shadow-header); }
 .header__tools { display: flex; align-items: center; gap: 10px; }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; }
@@ -294,7 +299,7 @@ main:focus { outline: none; }
 }
 .brand__name { font: 600 1.05rem/1 var(--display); }
 
-.nav { display: flex; align-items: center; margin-left: auto; }
+.nav { display: flex; align-items: center; margin-inline: auto; }
 .nav ul { display: flex; align-items: center; gap: 4px; }
 .nav ul a {
   position: relative;
@@ -313,8 +318,8 @@ main:focus { outline: none; }
 .icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
   width: 44px; height: 44px; padding: 0;
-  border: 1px solid var(--border); border-radius: 12px;
-  background: var(--surface); color: var(--text); cursor: pointer;
+  border: 1px solid var(--border-strong); border-radius: 50%;
+  background: transparent; color: var(--text); cursor: pointer;
   transition: border-color .2s ease, background-color .2s ease;
 }
 .icon-btn:hover { border-color: var(--accent); }
@@ -338,11 +343,13 @@ main:focus { outline: none; }
   .header__in { gap: 12px; }
   .header__tools { margin-left: auto; }
   .nav {
-    position: fixed; top: var(--header-h); left: 0; right: 0; margin-left: 0;
+    /* sous la capsule (absolute : le flou de la capsule empêche un fixed fiable) */
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0; margin: 0;
     flex-direction: column; align-items: stretch; gap: 8px;
-    padding: 8px clamp(20px, 5vw, 48px) 24px;
+    padding: 6px 22px 16px;
     background: var(--bg);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border-strong); border-radius: 28px;
+    box-shadow: 0 18px 44px var(--shadow-header);
     opacity: 0; visibility: hidden; transform: translateY(-8px);
     transition: opacity .25s ease, transform .25s ease, visibility .25s;
   }
@@ -350,7 +357,7 @@ main:focus { outline: none; }
   .nav ul { flex-direction: column; align-items: stretch; gap: 0; }
   .nav ul a { padding: 14px 4px; font-size: 1.1rem; border-bottom: 1px solid var(--border); }
   .nav ul a::after { display: none; }
-  .nav-open .header { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .nav ul li:last-child a { border-bottom: 0; }
 }
 
 /* ---------- Pastilles ---------- */
@@ -829,15 +836,14 @@ main:focus { outline: none; }
 .footer__list a.flink:hover { color: var(--accent); }
 .footer__mail { overflow-wrap: anywhere; }
 
-.footer__cv {
-  margin-top: clamp(32px, 5vw, 48px); padding-top: clamp(28px, 4vw, 40px);
-  border-top: 1px solid var(--border); text-align: center;
+.footer__cv { margin-top: 16px; }   /* bouton CV : dans la colonne Contact */
+.footer__legal {
+  margin-top: clamp(32px, 5vw, 48px); padding-top: 24px;
+  border-top: 1px solid var(--border); text-align: center; font-size: .92rem;
 }
-.footer__legal { margin-top: clamp(24px, 4vw, 36px); text-align: center; font-size: .92rem; }
 
 @media (max-width: 760px) {
   .footer__cols { grid-template-columns: minmax(0, 1fr); }
-  .footer__cv .btn { width: 100%; }
 }
 
 /* ---------- Mouvement réduit ---------- */
