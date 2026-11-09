@@ -103,7 +103,7 @@
 
   const showSuccess = (name) => {
     form.hidden = true;
-    el.okTexte.textContent = 'Merci ' + name + ', ton message est bien parti. Je te réponds par e-mail, à l\'adresse que tu as indiquée.';
+    el.okTexte.textContent = 'Merci ' + name + ', ton message a bien été envoyé.';
     el.ok.hidden = false;
     el.ok.focus();
   };

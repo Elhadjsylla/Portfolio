@@ -395,7 +395,7 @@ main:focus { outline: none; }
   row-gap: clamp(28px, 4vw, 48px);
   align-items: center;
 }
-/* accueil : le titre, puis juste dessous la carte « profil », alignée sur la même colonne ; la photo occupe toute la hauteur */
+/* accueil : le titre, puis juste dessous la carte « profil », alignée sur la même colonne ; la photo occupe les deux lignes */
 .hero__grid--tall { grid-template-areas: "text photo" "profile photo"; align-items: start; }
 .hero__text { grid-area: text; min-width: 0; }
 .hero__profile { grid-area: profile; min-width: 0; }
@@ -497,12 +497,8 @@ main:focus { outline: none; }
 }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-/* grand écran : la photo s'étire sur la hauteur du titre et de la carte « profil » */
-@media (min-width: 921px) {
-  .hero__grid--tall > .portrait { align-self: stretch; display: flex; flex-direction: column; width: min(100%, 460px); }
-  .hero__grid--tall > .portrait .portrait__frame { flex: 1; aspect-ratio: auto; min-height: 460px; }
-  .hero__grid--tall > .portrait .portrait__frame picture { position: absolute; inset: 0; display: block; }
-}
+/* accueil : la photo garde sa taille d'origine (4:5, 420 px), centrée en hauteur face au titre et à la carte « profil » */
+.hero__grid--tall > .portrait { align-self: center; }
 
 @media (max-width: 920px) {
   .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "photo"; }
@@ -834,9 +830,10 @@ main:focus { outline: none; }
 .contact__mail a:hover { color: var(--accent); background-size: 0% 3px; }
 .contact__actions { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 14px; }
 
-/* ---------- Page À propos : parcours en étapes, citation ---------- */
-.hero__grid--single .hero__title { margin-top: 18px; }
-.hero__grid--single .eyebrow { margin: 0; }
+/* ---------- Page À propos : photo et parcours en étapes ---------- */
+@media (min-width: 921px) {
+  .about--page .about-photo { position: sticky; top: calc(var(--header-h) + 16px); }   /* la photo reste en vue pendant le parcours */
+}
 
 .timeline { display: grid; margin: 0; padding: 0; list-style: none; }
 .step {
@@ -859,16 +856,6 @@ main:focus { outline: none; }
 .step__body p { color: var(--muted); max-width: 40em; }
 .step__body strong { color: var(--text); font-weight: 600; }
 .step__body .card__link { margin-top: 0; }
-
-.pullquote {
-  margin: 0; padding: clamp(28px, 6vw, 72px) clamp(22px, 6vw, 72px);
-  border: 1px solid var(--border-strong); border-radius: 32px;
-  background: radial-gradient(700px 320px at 0% 0%, var(--contact-glow), transparent 70%), var(--surface);
-}
-.pullquote .eyebrow { margin: 0 0 18px; }
-.pullquote blockquote { margin: 0; }
-.pullquote blockquote p { max-width: 20em; font: 700 clamp(1.6rem, 4.2vw, 3rem)/1.15 var(--display); letter-spacing: -.02em; }
-.pullquote__sub { margin-top: 22px; max-width: 34em; color: var(--muted); font-size: 1.15rem; }
 
 .page-head__chips { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
 
