@@ -102,6 +102,9 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 | **Sama Boutik, rôle** : « Je me suis occupé de la base de données et du back-end. » Faut-il ajouter la mise en ligne et le référencement du site, que ta première description citait ? | Ta dernière précision (base de données et back-end seulement) remplace la première. |
 | **Sama Boutik, crédit du front** : citer le proche qui l'a fait, avec son nom ? | Je ne publie le nom de personne sans accord. Pour l'instant, le site ne le mentionne pas. |
 | **EcoSurv, « Le problème »** : ton texte à toi, en une ou deux phrases ? | Le paragraphe actuel vient du « constat » de la page publique d'EcoSurv. |
+| **À propos : ton histoire** : pourquoi l'informatique ? Un moment, un déclic, une anecdote vraie, en une ou deux phrases ? | La page est solide mais reste fidèle aux faits confirmés. Une vraie phrase de toi la rendrait bien plus personnelle. Je n'invente aucun souvenir. |
+| **Accueil et À propos : l'accroche « le cahier et le crayon »** te convient-elle ? | Elle reprend ta phrase « J'aime quand un outil remplace vraiment le cahier et le crayon ». Elle est reprise sur l'accueil et dans la citation de À propos. |
+| Description de Sama Boutik : le point que tu signalais (« cité que Sama Boutik ») | Interprété comme : la description de l'accueil et celle de Sama Boutik ne montraient pas tout. Élargies. Dis-moi si tu visais autre chose. |
 | `og:image` : la photo en portrait (800×1067) te convient pour les aperçus de partage ? | Les aperçus (WhatsApp, LinkedIn) préfèrent du 1200×630, qui sera coupé en paysage. Une vraie image de partage reste à faire. |
 | Textes d'introduction des pages : tu valides la reformulation « Pour un stage, une collaboration ou un site à construire, écris-moi » ? | J'ai remplacé « toujours partant pour un nouveau défi » par une phrase plus directe, sans ajouter de fait. |
 
@@ -122,6 +125,13 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Choix technique : les logos de technologies sont posés sur une pastille bleu nuit plutôt que dupliqués en variantes claires/sombres. Un seul fichier par logo, lisible sur les deux fonds.
 - Photo : source 810 px de large, donc versions 480 et 800 px seulement (pas d'agrandissement vers 1200).
 - Tests faits en navigateur (Chrome headless) : 5 pages × 2 thèmes × 360, 390 et 1440 px, aucune erreur de console ni violation de CSP, aucun défilement horizontal, contrastes mesurés ≥ AA, clavier, menu mobile, mouvement réduit. Non testé : Safari iPhone, Firefox.
+
+### 2026-11-09 (accroches : accueil, À propos, Contact)
+- **Accueil :** nouveau titre en deux niveaux (« Salut, je suis Elhadj Sylla, développeur web à Dakar. » puis « Je construis des applications qui remplacent le cahier et le crayon. »). La description couvre maintenant les deux publics (commerçants : caisse, stock, dettes clients, même sans réseau ; écoles : élèves, paiements, reçus, absences), et pas seulement Sama Boutik. La carte de code `profil` est déplacée de la page À propos vers le haut de l'accueil, juste sous le titre, alignée sur la même colonne ; la photo s'étire sur toute la hauteur (titre + carte). La carte mentionne maintenant aussi les études (Licence 2, ESCOA), la base de données (Supabase) et les deux projets.
+- **Descriptions de Sama Boutik élargies** (cartes de l'accueil et page Projets) : hors ligne, Wave et Orange Money, accès par employé, grossistes et distributeurs. Les descriptions de partage (`<meta description>`, `og:`) de l'accueil, de À propos et de Contact sont réécrites dans le même esprit.
+- **À propos refait :** grand titre (« Un premier site codé à la main, puis des applications qui servent vraiment. »), photo en grand, parcours en 3 étapes (premier site, applications, aujourd'hui), citation (« J'aime quand un outil remplace vraiment le cahier et le crayon. »), outils utilisés, appel au contact. **Tout vient de faits que tu as confirmés ; rien d'inventé, aucune date, aucun chiffre.** À toi de le nourrir avec ton histoire (voir « À CONFIRMER »).
+- **Contact :** en-tête détaillé (petit titre, grand titre d'accroche, introduction, trois pastilles : Disponible, Dakar ou à distance, Réponse par e-mail).
+- Tests (Chrome headless) : 5 pages × 2 thèmes × 360, 390 et 1440 px sans erreur, contrastes AA, 130 contrôles du formulaire toujours OK.
 
 ### 2026-11-09 (page Contact et formulaire)
 - Branche `feat/contact`. Page Contact refaite : formulaire à gauche (empilé au-dessus sur mobile), coordonnées et réseaux à droite (GitHub, LinkedIn, Instagram, Facebook, chacun avec icône, nom et court libellé). Disponibilité : « Disponible. Ouvert à tout type de stage ou de mission. » Aucun délai de réponse annoncé, aucun numéro de téléphone.
