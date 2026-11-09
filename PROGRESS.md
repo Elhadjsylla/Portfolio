@@ -55,7 +55,7 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 
 - [ ] **Photo professionnelle** : j'ai utilisé la photo envoyée dans la conversation (810×1080, sans EXIF). **À valider.** Si tu en as une plus grande (idéalement 1200 px de large ou plus), remplace `images/photo-pro.jpg` et je régénère les versions, y compris 1200 px.
 - [ ] **Anciennes images de projets, non utilisées** : `images/projet-sama-boutik.jpg` (capture périmée, remplacée par `images/projets/`) et `images/projet-maison-fade.jpg` (projet retiré). Je ne les ai pas supprimées : dis-moi si je peux.
-- [ ] **Captures de projets** : vérifier d'un coup d'œil que `images/projets/*` ne montrent aucune donnée réelle. Sama Boutik affiche des exemples de démonstration sur sa page (« +15 000 FCFA », « Stock faible ») : je les crois fictifs, à confirmer.
+- [ ] **Captures de projets** : vérifier d'un coup d'œil que `images/projets/*` ne montrent aucune donnée réelle. Les exemples de démonstration de Sama Boutik (« +15 000 FCFA ») sont fictifs (confirmé).
 - [ ] **CV** : le bouton du pied de page télécharge `cv/CV_Elhadj_Sylla.pdf`, qui est **encore l'ancien fichier**. Le mettre à jour (retirer la cybersécurité, vérifier téléphone et adresse, métadonnées du PDF).
 - [ ] **Nettoyer l'ancien site** : `pages/` et la capture Darling Body sont déjà retirés. Restent `images/photo-profil.jpg` et `images/projet-portfolio.jpg`, non utilisés par le nouveau site : à supprimer si tu confirmes.
 - [ ] 1 projet client à ajouter plus tard.
@@ -78,8 +78,9 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - [x] Le lien Facebook (`collet00patrick`) est bien le sien : affiché dans le pied de page de chaque page et sur la page Contact.
 - [x] « Licence 2 informatique à l'ESCOA » est exact.
 - [x] Ville : Dakar.
-- [x] Sama Boutik : technologies React, Tailwind CSS et Vite (aucun tag PHP ni Supabase) ; rôle : conception de l'interface, développement, mise en ligne et référencement.
-- [x] EcoSurv : mêmes technologies ; fonctions confirmées : inscription des élèves, barèmes en MRU, encaissements en espèces et par mobile money, reçus PDF numérotés, suivi des absences.
+- [x] Sama Boutik : technologies React, Tailwind CSS, Vite et **Supabase** (la base de données), pas de PHP. Rôle : **base de données et back-end** (le front a été fait par un proche, non nommé sur le site). Le « problème » : les gens perdent de l'argent en gérant leur boutique sur un bout de papier.
+- [x] Sama Boutik, fonctions : caisse, stock, dettes clients, alerte de retard, hors ligne, paiements Wave et Orange Money, un accès par employé ou vendeur, et le volet grossistes et distributeurs (boutiques clientes à crédit, tournées, rapprochement de caisse). Confirmé par Elhadj. Les exemples de démonstration du site (montants, noms) sont des tests anciens, fictifs.
+- [x] EcoSurv : mêmes technologies, Supabase compris ; conçu pour la gestion des écoles ; rôle : **tout réalisé par Elhadj** (interface, base de données, développement, mise en ligne). Fonctions retenues : les 5 confirmées plus chèque, opérateurs Bankily, Masrvi et Sedad, validation par le directeur, clôture de caisse, notifications, quatre accès. Aucun tarif repris.
 - [x] Darling Body revient sur la page Projets, présenté comme son premier site.
 
 ## Procédure pour ajouter un projet
@@ -96,11 +97,9 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 | Question | Pourquoi |
 |----------|----------|
 | Mentionner Sunu Classe, OGF, ou les sites d'immersion (Rassoul Tijara, MD__shoot, The Store…) ? | Aucun lien en ligne connu pour le moment. |
-| **« Le problème » de Sama Boutik et d'EcoSurv** : pourquoi as-tu créé chaque projet ? | Les deux paragraphes actuels viennent du « constat » des pages publiques des sites (cahier, stock compté à la main, reçus sur papier). À remplacer par tes mots. |
-| **Rôle sur EcoSurv** : « J'ai conçu l'interface, développé la plateforme et l'ai mise en ligne. » | Formulation proposée par moi, non confirmée. |
-| **Fonctionnalités d'EcoSurv** : garder seulement les 5 lignes que tu as confirmées ? | Visibles sur le site mais **non reprises**, faute d'accord : chèque, noms des opérateurs (Bankily, Masrvi, Sedad), validation par le directeur, clôture de caisse, quatre accès (directeur, caissier, enseignant, parent), notifications, utilisable sur téléphone et ordinateur. Aucun tarif repris. |
-| **Sama Boutik, écarts avec ta description** | Le site public s'adresse aussi aux grossistes et distributeurs (boutiques clientes à crédit, tournées de vendeurs, rapprochement de caisse). Il annonce aussi : fonctionnement hors ligne, paiement Wave et Orange Money, un accès par employé, alerte de retard de paiement. **Rien de cela n'est écrit** sur le site tant que tu ne l'as pas confirmé. |
-| Darling Body : le lien `https://darlingbody.com` et la phrase « Mon tout premier site, codé entièrement à la main, en HTML, CSS et JavaScript » sont-ils toujours justes ? | Repris de l'ancien site. Le site répond (HTTP 200). |
+| **Sama Boutik, rôle** : « Je me suis occupé de la base de données et du back-end. » Faut-il ajouter la mise en ligne et le référencement du site, que ta première description citait ? | Ta dernière précision (base de données et back-end seulement) remplace la première. |
+| **Sama Boutik, crédit du front** : citer le proche qui l'a fait, avec son nom ? | Je ne publie le nom de personne sans accord. Pour l'instant, le site ne le mentionne pas. |
+| **EcoSurv, « Le problème »** : ton texte à toi, en une ou deux phrases ? | Le paragraphe actuel vient du « constat » de la page publique d'EcoSurv. |
 | `og:image` : la photo en portrait (800×1067) te convient pour les aperçus de partage ? | Les aperçus (WhatsApp, LinkedIn) préfèrent du 1200×630, qui sera coupé en paysage. Une vraie image de partage reste à faire. |
 | Textes d'introduction des pages : tu valides la reformulation « Pour un stage, une collaboration ou un site à construire, écris-moi » ? | J'ai remplacé « toujours partant pour un nouveau défi » par une phrase plus directe, sans ajouter de fait. |
 
@@ -131,3 +130,4 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Pied de page de chaque page : GitHub, LinkedIn, Instagram **et Facebook**.
 - Zones tactiles : tous les liens et boutons font au moins 44 px (mesuré en navigateur).
 - Textes : seuls les faits confirmés sont écrits. Les passages à valider sont dans « À CONFIRMER ». Pas de changement de CSP.
+- Après réponses d'Elhadj : tag **Supabase** ajouté aux deux projets (base de données) ; rôle de Sama Boutik réduit à la base de données et au back-end ; EcoSurv « tout réalisé moi-même » ; fonctions de Sama Boutik (hors ligne, Wave et Orange Money, accès par employé, alerte de retard, volet grossistes) et d'EcoSurv (chèque, opérateurs, validation par le directeur, clôture de caisse, notifications, quatre accès) ajoutées.
