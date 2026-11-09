@@ -47,7 +47,7 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 
 ## En cours
 
-- [ ] Branche `content/projets` (créée en local à partir de `feat/structure-multipage`, car `dev` contient encore l'ancien site) : page Projets détaillée faite, en attente de validation d'Elhadj et des réponses listées dans « À CONFIRMER ».
+- [ ] Branche `feat/contact` (créée en local à partir de `content/projets`, car ni `content/projets` ni `feat/structure-multipage` ne sont fusionnées et `dev` contient encore l'ancien site) : page Contact et formulaire faits, **en attente de l'identifiant Formspree** et de la validation d'Elhadj. Les branches `feat/structure-multipage` et `content/projets` attendent aussi sa validation.
 
 ---
 
@@ -59,6 +59,8 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - [ ] **CV** : le bouton du pied de page télécharge `cv/CV_Elhadj_Sylla.pdf`, qui est **encore l'ancien fichier**. Le mettre à jour (retirer la cybersécurité, vérifier téléphone et adresse, métadonnées du PDF).
 - [ ] **Nettoyer l'ancien site** : `pages/` et la capture Darling Body sont déjà retirés. Restent `images/photo-profil.jpg` et `images/projet-portfolio.jpg`, non utilisés par le nouveau site : à supprimer si tu confirmes.
 - [ ] 1 projet client à ajouter plus tard.
+- [ ] **Formspree : créer le compte et coller l'identifiant** dans `js/config.js` (`FORM_ENDPOINT`). Tant qu'il est vide, le bouton du formulaire ouvre un e-mail pré-rempli au lieu d'envoyer. Étapes détaillées dans la réponse de l'agent du 9 novembre 2026 (compte gratuit, nouveau formulaire vers elhadjsylla667@gmail.com, copier l'URL `https://formspree.io/f/xxxxxxxx`, activer le filtre anti-spam).
+- [ ] **WhatsApp** : veux-tu l'ajouter aux réseaux de la page Contact ? Je ne publie **jamais** ton numéro sans ton accord.
 - [ ] **GitHub** : activer la protection de branche sur `main` et `dev`, la double authentification, *Secret scanning* et *Push protection* (`GIT_RULES.md` §7).
 - [ ] **Vercel** : connecter le dépôt, puis rattacher le nom de domaine. Mettre à jour les URL `og:` dans `index.html`.
 
@@ -120,6 +122,14 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Choix technique : les logos de technologies sont posés sur une pastille bleu nuit plutôt que dupliqués en variantes claires/sombres. Un seul fichier par logo, lisible sur les deux fonds.
 - Photo : source 810 px de large, donc versions 480 et 800 px seulement (pas d'agrandissement vers 1200).
 - Tests faits en navigateur (Chrome headless) : 5 pages × 2 thèmes × 360, 390 et 1440 px, aucune erreur de console ni violation de CSP, aucun défilement horizontal, contrastes mesurés ≥ AA, clavier, menu mobile, mouvement réduit. Non testé : Safari iPhone, Firefox.
+
+### 2026-11-09 (page Contact et formulaire)
+- Branche `feat/contact`. Page Contact refaite : formulaire à gauche (empilé au-dessus sur mobile), coordonnées et réseaux à droite (GitHub, LinkedIn, Instagram, Facebook, chacun avec icône, nom et court libellé). Disponibilité : « Disponible. Ouvert à tout type de stage ou de mission. » Aucun délai de réponse annoncé, aucun numéro de téléphone.
+- Formulaire : nom, e-mail, sujet (facultatif), message de 20 à 2000 caractères avec compteur. Validation en français reliée aux champs (`aria-describedby`, `aria-invalid`), focus sur le premier champ en erreur. Anti-spam : champ piège `_gotcha` caché par classe CSS et délai minimum de 3 secondes. États annoncés avec `aria-live`. Sans JavaScript : l'adresse e-mail remplace le formulaire. Pas de `innerHTML`.
+- Envoi : `js/config.js` (`FORM_ENDPOINT = ""`) et `js/contact.js`, chargés sur cette page seulement. Identifiant vide = e-mail pré-rempli (`mailto:`). Identifiant renseigné = `fetch` POST JSON vers Formspree. Un identifiant qui n'a pas la forme `https://formspree.io/f/…` est ignoré (repli mailto).
+- **CSP modifiée, à la demande d'Elhadj :** `connect-src 'self' https://formspree.io`, identique dans le `<meta>` des 5 pages et dans `vercel.json`. Raison : autoriser l'envoi du formulaire de contact vers Formspree. `form-action 'none'` et le reste de la CSP sont inchangés. `SECURITY_RULES.md` §4 et §6 mis à jour (service tiers autorisé : Formspree, pour ce formulaire seulement).
+- Bug trouvé par les tests et corrigé : `display: grid` écrasait l'attribut `hidden` (la confirmation aurait été visible dès le départ). Ajout de `[hidden] { display: none !important; }`.
+- Tests faits en navigateur : mise en page, thèmes, tailles, validation, délai, champ piège, repli mailto, faux identifiant (requête réelle vers formspree.io : erreur propre, aucune violation CSP), envoi simulé (en cours, succès, contenu de la requête), clavier seul, sans JavaScript, mouvement réduit. **Pas testé : un vrai envoi** (il faut l'identifiant Formspree).
 
 ### 2026-11-09 (page Projets)
 - Branche `content/projets`. Maison Fade retiré partout (cartes, tags, lien, balises `og:`/description, et les phrases qui y faisaient allusion : « l'agenda d'un salon »). **Le fichier `images/projet-maison-fade.jpg` n'est pas supprimé** : à ton accord.
