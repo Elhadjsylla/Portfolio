@@ -285,7 +285,7 @@ main:focus { outline: none; }
 }
 .header__tools { display: flex; align-items: center; gap: 10px; }
 
-.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; }
 .brand__mark {
   display: grid; place-items: center;
   width: 40px; height: 40px; border-radius: 12px;
@@ -570,12 +570,13 @@ main:focus { outline: none; }
 }
 
 .card__link {
-  margin-top: auto; padding-top: 8px; align-self: flex-start;
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; min-height: 44px; padding-block: 10px 12px;   /* zone tactile >= 44 px */
   color: var(--accent); font-weight: 600; text-decoration: none;
-  background: linear-gradient(currentColor, currentColor) left bottom / 100% 2px no-repeat;
-  padding-bottom: 3px; transition: background-size .3s var(--ease), color .2s ease;
+  background: linear-gradient(currentColor, currentColor) left bottom 8px / 100% 2px no-repeat;
+  transition: background-size .3s var(--ease), color .2s ease;
 }
-.more .card__link { margin-top: 0; padding-top: 0; }
+.more .card__link { margin-top: 0; }
 .card__link::after { content: " \2192"; display: inline-block; transition: transform .3s var(--ease); }
 .card__link:hover { color: var(--link-hover); }
 .card__link:hover::after { transform: translateX(4px); }
@@ -587,6 +588,72 @@ main:focus { outline: none; }
 }
 .card--cta .card__body { justify-content: center; align-items: flex-start; gap: 14px; }
 .card--cta .btn { margin-top: 6px; }
+
+/* tags avec icône de technologie (pastille bleu nuit : lisible sur les deux fonds) */
+.tags--icons li { display: inline-flex; align-items: center; gap: 8px; padding: 3px 12px 3px 4px; }
+.tag-ico { display: grid; place-items: center; flex: none; width: 24px; height: 24px; border-radius: 8px; background: var(--plate); }
+.tag-ico img { width: 16px; height: 16px; }
+
+.badge--static { position: static; align-self: flex-start; }
+.eyebrow { color: var(--accent); font: 600 .85rem/1.3 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- Page Projets : blocs détaillés ---------- */
+.projects { display: grid; gap: clamp(72px, 10vw, 128px); }
+.project {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(32px, 6vw, 80px); align-items: center;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+.project--flip .project__shots { order: 2; }
+.project__shots { position: relative; padding-bottom: clamp(56px, 8vw, 104px); }
+
+/* fenêtre de navigateur : barre avec trois points */
+.browser {
+  overflow: hidden; border-radius: 14px;
+  border: 1px solid var(--border-strong); background: var(--surface);
+  box-shadow: 0 24px 60px var(--shadow-photo);
+}
+.browser__bar { display: flex; align-items: center; gap: 7px; height: 34px; padding-inline: 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+.browser__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--dot-1); }
+.browser__bar i:nth-child(2) { background: var(--dot-2); }
+.browser__bar i:nth-child(3) { background: var(--dot-3); }
+.browser img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+
+/* cadre de téléphone, en léger chevauchement */
+.phone {
+  position: absolute; right: clamp(8px, 2%, 20px); bottom: 0;
+  width: clamp(84px, 19%, 140px); overflow: hidden;
+  border: 5px solid var(--plate); border-radius: 22px; background: var(--plate);
+  box-shadow: 0 0 0 1px var(--border-strong), 0 20px 44px var(--shadow-photo);
+}
+.project--flip .phone { right: auto; left: clamp(8px, 2%, 20px); }
+.phone img { width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: 16px; }
+
+.project__body { display: grid; gap: 10px; justify-items: start; }
+.project__body h2 { font: 700 clamp(1.8rem, 3.6vw, 2.6rem)/1.1 var(--display); letter-spacing: -.02em; }
+.project__body h3 { margin-top: 14px; font: 600 1rem/1.4 var(--display); }
+.project__body p { color: var(--muted); max-width: 34em; }
+.project__body .project__lede { color: var(--text); font-size: 1.15rem; max-width: 32em; }
+.project__body .badge { color: var(--text); }
+.project__body .eyebrow { color: var(--accent); max-width: none; }
+.project__list { display: grid; gap: 6px; color: var(--muted); }
+.project__list li { position: relative; padding-left: 22px; }
+.project__list li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.project__body .tags { margin-top: 12px; }
+.project__cta { margin-top: 14px; }
+
+.project--compact { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.project--compact .project__shots { padding-bottom: 0; }
+.project--compact .browser img { aspect-ratio: 1000 / 496; }   /* capture 2:1, sans recadrage */
+
+@media (max-width: 860px) {
+  .project, .project--compact { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .project--flip .project__shots { order: 0; }
+  .project--flip .phone { left: auto; right: clamp(8px, 3%, 28px); }
+  .project__shots { padding-bottom: clamp(48px, 14vw, 80px); }
+  .phone { width: clamp(76px, 22%, 130px); border-width: 4px; border-radius: 18px; }
+  .phone img { border-radius: 13px; }
+}
 
 /* ---------- Compétences ---------- */
 .skills { border-bottom: 1px solid var(--border); }
@@ -722,6 +789,7 @@ main:focus { outline: none; }
 .contact__mail { margin-top: 32px; }
 .contact__mail a {
   font: 600 clamp(1.15rem, 3.4vw, 2.1rem)/1.25 var(--display); letter-spacing: -.01em;
+  display: inline-flex; align-items: center; min-height: 44px;
   overflow-wrap: anywhere; text-decoration: none; color: var(--text);
   background: linear-gradient(var(--accent), var(--accent)) left bottom / 100% 3px no-repeat;
   padding-bottom: 6px; transition: background-size .35s var(--ease), color .2s ease;
@@ -738,7 +806,7 @@ main:focus { outline: none; }
 .footer__list { display: grid; gap: 4px; }
 .footer__list a, .footer__list li > span {
   display: inline-flex; align-items: center; gap: 12px;
-  padding-block: 7px; color: var(--muted); text-decoration: none;
+  min-height: 44px; padding-block: 8px; color: var(--muted); text-decoration: none;
   transition: color .2s ease;
 }
 .footer__list a:hover, .footer__list a[aria-current="page"] { color: var(--text); }
