@@ -44,7 +44,8 @@ Le site est statique (HTML, CSS, JavaScript), sans serveur ni base de données.
 - **Pas de `innerHTML`, `outerHTML`, `document.write` ni `eval`.** Pour écrire du texte : `textContent`. Pour créer des éléments : `createElement`.
 - Liens externes : toujours `rel="noopener noreferrer"`, et `target="_blank"` seulement pour un lien qui sort du site.
 - Aucun lien `javascript:` ni `data:` cliquable. Les liens `mailto:` sont autorisés.
-- Pas de `localStorage` pour des données personnelles. (Le site n'en stocke aucune.)
+- Pas de `localStorage` pour des données personnelles. Le site n'en stocke aucune.
+  **Seule exception autorisée : la clé `theme`** (valeur `light` ou `dark`), qui mémorise le choix d'affichage clair/sombre. C'est une préférence d'affichage, pas une donnée personnelle. Aucune autre clé sans l'accord d'Elhadj. Lectures et écritures dans un `try/catch` : le site marche aussi si le stockage est bloqué.
 
 ## 6. En-têtes de sécurité et CSP
 
