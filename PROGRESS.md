@@ -130,4 +130,5 @@ Base du nouveau site posée (HTML/CSS/JS, thème bleu nuit, une seule page). Il 
 - Pied de page de chaque page : GitHub, LinkedIn, Instagram **et Facebook**.
 - Zones tactiles : tous les liens et boutons font au moins 44 px (mesuré en navigateur).
 - Textes : seuls les faits confirmés sont écrits. Les passages à valider sont dans « À CONFIRMER ». Pas de changement de CSP.
+- En-tête de la page Projets enrichi à la demande d'Elhadj : petit titre, grand titre (« Des outils pour tenir une boutique et gérer une école. »), introduction et trois raccourcis vers les projets. Les blocs projets sont inchangés. Texte écrit à partir de faits confirmés, sans chiffre.
 - Après réponses d'Elhadj : tag **Supabase** ajouté aux deux projets (base de données) ; rôle de Sama Boutik réduit à la base de données et au back-end ; EcoSurv « tout réalisé moi-même » ; fonctions de Sama Boutik (hors ligne, Wave et Orange Money, accès par employé, alerte de retard, volet grossistes) et d'EcoSurv (chèque, opérateurs, validation par le directeur, clôture de caisse, notifications, quatre accès) ajoutées.
